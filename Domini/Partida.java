@@ -1,5 +1,5 @@
 package Domini;
-/*** ___PROVA PEL GIT___ ***/
+/*** ___PROVA PEL PULL blablalbalblalbla ***/
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Partida {
