@@ -1,5 +1,5 @@
 package Domini;
-
+/* PROVA PEL GIT */
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Partida {
