@@ -4,7 +4,7 @@
 * Víctor Vallejo
 * Pau Núñez
 
-### **-------------------------------------------------- Tuto GIT --------------------------------------------------**
+### **------------------------------------------------ Tuto GIT ------------------------------------------------**
 
 * Obrir consola i cd fins a la carpeta on hi ha el projecte (és la carpeta que té una carpeta anomenada .git, és oculta `ls -la` per veure-la)
 
