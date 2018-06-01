@@ -13,12 +13,12 @@
 ___
 Quan vulgueu pujar arxius perquè heu fet canvis:
 * `git add [fitxers a pujar]`
-   
-     `git status` us mostra què teniu diferent al local respecte al que està en línia  
-     `git diff` us ensenya les línies de codi que heu eliminat (-) i les que heu afegit (+)
-   
 * `git commit -m "Comentari bla bla bla"`
-
-     `git log` mostra el log dels commits que s'han fet
-   
 * `git push origin master`
+
+     `git status` us mostra què teniu diferent al local respecte al que està en línia  
+     `git diff` us ensenya les línies de codi que heu eliminat (-) i les que heu afegit (+)  
+     `git log` mostra el log dels commits que s'han fet  
+     `git remote add origin` https://github.com/user/repo.git  
+     `git remote set-url origin` git://new.url.here
+    > En el nostre cas url = https://github.com/Artagok/PROP-Hidato.git
