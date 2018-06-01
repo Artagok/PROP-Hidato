@@ -4,7 +4,7 @@
 * Víctor Vallejo
 * Pau Núñez
 
-### **------------------------- Tuto GIT -------------------------**
+### **-------------------------------------------------- Tuto GIT --------------------------------------------------**
 
 * Obrir consola i cd fins a la carpeta on hi ha el projecte (és la carpeta que té una carpeta anomenada .git, és oculta `ls -la` per veure-la)
 
@@ -19,6 +19,6 @@ Quan vulgueu pujar arxius perquè heu fet canvis:
      `git status` us mostra què teniu diferent al local respecte al que està en línia  
      `git diff` us ensenya les línies de codi que heu eliminat (-) i les que heu afegit (+)  
      `git log` mostra el log dels commits que s'han fet  
-     `git remote add origin` https://github.com/user/repo.git  
-     `git remote set-url origin` git://new.url.here
-    > En el nostre cas url = https://github.com/Artagok/PROP-Hidato.git
+     `git remote add origin https://github.com/user/repo.git` per afegir i fer un alias de la paraula *origin* amb el repositori remot (per poder fer `git pull` sense args)  
+     `git remote set-url origin git://new.url.here` per modificar l'alias *origin* per si us heu equivocat (no us deixeu el .git al final)
+    > En el nostre cas URL = https://github.com/Artagok/PROP-Hidato.git
