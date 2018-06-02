@@ -68,7 +68,18 @@ public class Taulell {
     public ArrayList<ArrayList<String>> getTaulellOriginal() {
         return this.taulellOriginal;
     }
-
+    public void setTipusCasella(String tC){
+      this.tipusCasella = new String(tC);
+    }
+    public void setTipusAdj(String tA){
+      this.tipusAdjacencia = new String(tA);
+    }
+    public void setNumFiles(int nF){
+      this.numFiles = nF;
+    }
+    public void setNumColumnes(int nC){
+      this.numColumnes = nC;
+    }
     public boolean esValid() {
        int count = countCasellesNum();
        //System.out.println("countCasellesNum() = " + count);
@@ -139,7 +150,7 @@ public class Taulell {
         }
         quinaAdj();
       }
-      public void quinaAdj{
+      public void quinaAdj(){
 
         switch (this.tipusCasella) {
 
