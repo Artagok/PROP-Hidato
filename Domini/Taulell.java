@@ -161,10 +161,10 @@ public class Taulell {
         quinaAdj();
       }
       public void quinaAdj(){
-        System.out.println(this.tipusCasella);
-        System.out.println(this.tipusAdjacencia);
-        System.out.println(this.numFiles);
-        System.out.println(this.numColumnes);
+        //System.out.println(this.tipusCasella);
+        //System.out.println(this.tipusAdjacencia);
+        //System.out.println(this.numFiles);
+        //System.out.println(this.numColumnes);
         switch (this.tipusCasella) {
 
             case "Q":
