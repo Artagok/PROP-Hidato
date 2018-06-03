@@ -58,7 +58,9 @@ public class Partida {
     public void generarTaulell(int dificultat){
       Random rand = new Random();
       int r;
+      int prob = 20;
       if(dificultat == 1){
+        //prob = 20;
         r = rand.nextInt(2)%2;
         switch(r){
           case 0:
@@ -79,9 +81,46 @@ public class Partida {
         }
       }
       else if(dificultat == 2){
+        //prob = 20;
+        r = rand.nextInt(2)%2;
+        switch(r){
+          case 0:
+                this.taulell.setTipusCasella("T");
+                this.taulell.setTipusAdj("CA");
+                this.taulell.setNumFiles(6);
+                this.taulell.setNumColumnes(3);
+                System.out.println("Aquest Hidato es de tipus Triangular, amb adjacencia per CostatVertex, i 6x3");
+                break;
+          case 1:
+                this.taulell.setTipusCasella("H");
+                this.taulell.setTipusAdj("CA");
+                this.taulell.setNumFiles(4);
+                this.taulell.setNumColumnes(4);
+                System.out.println("Aquest Hidato es de tipus Hexagonal, amb adjacencia per CostatVertex, i 4x4");
+                break;
+          default: System.out.println("el random no va be");
+        }
 
       }
       else if(dificultat == 3){
+        r = rand.nextInt(2)%2;
+        switch(r){
+          case 0:
+                this.taulell.setTipusCasella("Q");
+                this.taulell.setTipusAdj("CA");
+                this.taulell.setNumFiles(6);
+                this.taulell.setNumColumnes(6);
+                System.out.println("Aquest Hidato es de tipus Quadrat, amb adjacencia per CostatVertex, i 6x6");
+                break;
+          case 1:
+                this.taulell.setTipusCasella("H");
+                this.taulell.setTipusAdj("C");
+                this.taulell.setNumFiles(5);
+                this.taulell.setNumColumnes(5);
+                System.out.println("Aquest Hidato es de tipus Hexagonal, amb adjacencia per Costat, i 5x5");
+                break;
+          default: System.out.println("el random no va be");
+        }
 
       }
       else if(dificultat == 4){
@@ -92,6 +131,19 @@ public class Partida {
       }
       else System.out.println("Ep! La dificultat no esta entre 1 i 5");
       tractaGeneracio();
+      ArrayList<ArrayList<Casella>> tau = new ArrayList<ArrayList<Casella>> (0);
+      tau = this.taulell.getTaulell();
+      //this.taulell.imprimirTaulell();
+      for(int i = 0; i < tau.size(); ++i){
+        for(int j = 0; j < tau.get(0).size();++j){
+            r = rand.nextInt(100)%100;
+            //System.out.println(r);
+            if((r > prob-1) && !(tau.get(i).get(j).getValor().equals("1")) ){
+                tau.get(i).get(j).omplirValor("?");
+            }
+        }
+      }
+      this.taulell.imprimirTaulell();
     }
     public void tractaGeneracio(){
       int nF = this.taulell.getNumFiles();
@@ -159,11 +211,6 @@ public class Partida {
         }
 
       }
-      //this.taulell.resetTaulell();
-
-      this.taulell.imprimirTaulell();
-
-
 
     }
     public void omplirCasella(int i, int j, String valor) {
@@ -171,7 +218,7 @@ public class Partida {
         if (startTimer) {
             startTimer = false;
             timer.scheduleAtFixedRate(new TimerTask(){
-            
+
                 @Override
                 public void run() {
                     if (taulell.checkIfValid()) {

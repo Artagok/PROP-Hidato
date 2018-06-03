@@ -18,8 +18,8 @@ public class Taulell {
     private String tipusAdjacencia;                                 //
                                                                     //
     private ArrayList<ArrayList<Casella>> taulell;                  //
-    private ArrayList<ArrayList<String>> taulellOriginal;   
-    
+    private ArrayList<ArrayList<String>> taulellOriginal;
+
     private boolean actualmentValid;//
     //////////////////////////////////////////////////////////////////
 
