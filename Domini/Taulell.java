@@ -80,6 +80,16 @@ public class Taulell {
     public void setNumColumnes(int nC){
       this.numColumnes = nC;
     }
+    public void setIinicial(int iI){
+      this.iCasellaInicial = iI;
+    }
+    public void setJInicial(int jI){
+      this.jCasellaInicial = jI;
+    }
+    public void setTaulell(ArrayList<ArrayList<Casella>> t){
+      this.taulell = t;
+
+    }
     public boolean esValid() {
        int count = countCasellesNum();
        //System.out.println("countCasellesNum() = " + count);
@@ -151,7 +161,10 @@ public class Taulell {
         quinaAdj();
       }
       public void quinaAdj(){
-
+        System.out.println(this.tipusCasella);
+        System.out.println(this.tipusAdjacencia);
+        System.out.println(this.numFiles);
+        System.out.println(this.numColumnes);
         switch (this.tipusCasella) {
 
             case "Q":
@@ -473,7 +486,7 @@ public class Taulell {
         }
     }
 
-    private void llegirTaulellOriginal() {
+    public void llegirTaulellOriginal() {
 
         ArrayList<ArrayList<String>> aux = new ArrayList<ArrayList<String>> (0);
 

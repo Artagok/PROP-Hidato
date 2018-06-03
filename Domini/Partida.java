@@ -45,17 +45,22 @@ public class Partida {
       Random rand = new Random();
       int r;
       if(dificultat == 1){
-        r = rand.nextInt(2);
+        r = rand.nextInt(2)%2;
         switch(r){
-          case 1:
+          case 0:
                 this.taulell.setTipusCasella("Q");
                 this.taulell.setTipusAdj("C");
                 this.taulell.setNumFiles(3);
                 this.taulell.setNumColumnes(3);
                 break;
-          case 2:
+          case 1:
+                this.taulell.setTipusCasella("Q");
+                this.taulell.setTipusAdj("C");
+                this.taulell.setNumFiles(3);
+                this.taulell.setNumColumnes(3);
 
                 break;
+          default: System.out.println("el random no va be");
         }
       }
       else if(dificultat == 2){
@@ -71,11 +76,60 @@ public class Partida {
 
       }
       else System.out.println("Ep! La dificultat no esta entre 1 i 5");
+      System.out.println("ARRIBA1");
       tractaGeneracio();
     }
     public void tractaGeneracio(){
       int nF = this.taulell.getNumFiles();
       int nC = this.taulell.getNumColumnes();
+      crearTotAmbInt(nF, nC);
+      this.taulell.quinaAdj();
+      //this.taulell.imprimirTaulell();
+      determinarPrincipi(nF, nC);
+
+
+    }
+    public void crearTotAmbInt(int nF, int nC){
+      ArrayList<ArrayList<Casella>> t = new ArrayList<ArrayList<Casella>> (0);
+      for(int i = 0; i < nF; ++i){
+        ArrayList<Casella> filaT = new ArrayList<Casella> (0);
+        for(int j = 0; j < nC; ++j){
+          Casella cAux = new Casella();
+          cAux.omplirValor("?");
+          cAux.setPosicioI(i);
+          cAux.setPosicioJ(j);
+          filaT.add(cAux);
+        }
+        t.add(filaT);
+      }
+      this.taulell.setTaulell(t);
+      this.taulell.imprimirTaulell();
+    }
+    public void determinarPrincipi(int nF, int nC){
+      boolean fixat = false;
+      Random r = new Random();
+
+      while(!fixat){
+      //  System.out.println(fixat);
+        int i = r.nextInt(nF)%nF;
+        //System.out.println(i);                                           //ERROR AL RANDOM
+        int j = r.nextInt(nC)%nC;
+        //System.out.println(j);
+        ArrayList<ArrayList<Casella>> tau = new ArrayList<ArrayList<Casella>> (0);
+
+        tau = this.taulell.getTaulell();
+        if(tau.get(i).get(j).equals("?")){
+
+        tau.get(i).get(j).omplirValor("1");
+        this.taulell.setIinicial(i);
+        this.taulell.setJInicial(j);
+        fixat = this.taulell.resoldreHidato(this.taulell.getTaulell().get(i).get(j));
+        }
+      }
+      System.out.println("acaba el while");
+      this.taulell.quinaAdj();
+      this.taulell.llegirTaulellOriginal();
+
 
 
     }
