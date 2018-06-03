@@ -18,12 +18,15 @@ public class Taulell {
     private String tipusAdjacencia;                                 //
                                                                     //
     private ArrayList<ArrayList<Casella>> taulell;                  //
-    private ArrayList<ArrayList<String>> taulellOriginal;           //
+    private ArrayList<ArrayList<String>> taulellOriginal;   
+    
+    private boolean actualmentValid;//
     //////////////////////////////////////////////////////////////////
 
     public Taulell(int id) {
         idTaulell = id;
         taulell = new ArrayList<ArrayList<Casella>> (0);
+        actualmentValid = false;
     }
 
     /* Getters */
@@ -94,7 +97,13 @@ public class Taulell {
        int count = countCasellesNum();
        //System.out.println("countCasellesNum() = " + count);
        //System.out.println("(i,j) inicials = (" + this.iCasellaInicial + "," + this.jCasellaInicial + ")");
-       return saltarCaselles(taulell.get(iCasellaInicial).get(jCasellaInicial), count);
+       if (saltarCaselles(taulell.get(iCasellaInicial).get(jCasellaInicial), count)) {
+           actualmentValid = true;
+           return true;
+       }
+       else {
+           return false;
+       }
     }
 
     private boolean saltarCaselles(Casella c, int count) {
@@ -501,5 +510,9 @@ public class Taulell {
             aux.add(auxLinia);
         }
         this.taulellOriginal = aux;
+    }
+
+    public boolean checkIfValid() {
+        return actualmentValid;
     }
 }

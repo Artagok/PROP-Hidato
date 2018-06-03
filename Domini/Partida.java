@@ -3,24 +3,34 @@ package Domini;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 public class Partida {
+
     private Jugador jugador;
     private Taulell taulell;
     private int iAnterior;
     private int jAnterior;
     private String valorAnterior;
+    private Boolean startTimer;
+    private int time;
+    private Timer timer = new Timer();
 
 
     public Partida () {
         this.jugador = null;
         this.taulell = null;
         this.valorAnterior = null;
+        this.startTimer = new Boolean(true);
+        this.time = 0;
     }
 
     public Partida(Jugador j, Taulell t) {
         this.jugador = j;
         this.taulell = t;
         this.valorAnterior = null;
+        this.startTimer = new Boolean(true);
+        this.time = 0;
     }
 
     /* Getters */
@@ -39,6 +49,10 @@ public class Partida {
 
     public int getJAnterior() {
         return this.jAnterior;
+    }
+
+    public void stopTimer() {
+        timer.cancel();
     }
 
     public void generarTaulell(int dificultat){
@@ -153,6 +167,23 @@ public class Partida {
 
     }
     public void omplirCasella(int i, int j, String valor) {
+
+        if (startTimer) {
+            startTimer = false;
+            timer.scheduleAtFixedRate(new TimerTask(){
+            
+                @Override
+                public void run() {
+                    if (taulell.checkIfValid()) {
+                        timer.cancel();
+                        System.out.println("Temps transcorregut: " + time + "s");
+                    }
+                    else
+                        ++time;
+                }
+            }, 0, 1000);
+        }
+
         ArrayList <ArrayList <Casella> > matriuOriginal = new ArrayList<ArrayList<Casella>> (0);
         boolean valorEsEnter = true;
         try {
