@@ -52,13 +52,14 @@ public class Partida {
                 this.taulell.setTipusAdj("C");
                 this.taulell.setNumFiles(3);
                 this.taulell.setNumColumnes(3);
+                System.out.println("Aquest Hidato es de tipus Quadrat, amb adjacencia per Costat, i 3x3");
                 break;
           case 1:
-                this.taulell.setTipusCasella("Q");
-                this.taulell.setTipusAdj("C");
+                this.taulell.setTipusCasella("T");
+                this.taulell.setTipusAdj("CA");
                 this.taulell.setNumFiles(3);
                 this.taulell.setNumColumnes(3);
-
+                System.out.println("Aquest Hidato es de tipus Triangle, amb adjacencia per CostatVertex, i 3x3");
                 break;
           default: System.out.println("el random no va be");
         }
@@ -76,7 +77,6 @@ public class Partida {
 
       }
       else System.out.println("Ep! La dificultat no esta entre 1 i 5");
-      System.out.println("ARRIBA1");
       tractaGeneracio();
     }
     public void tractaGeneracio(){
@@ -84,7 +84,23 @@ public class Partida {
       int nC = this.taulell.getNumColumnes();
       crearTotAmbInt(nF, nC);
       this.taulell.quinaAdj();
+    /*  ArrayList<ArrayList<Casella>> aux = new ArrayList<ArrayList<Casella>>(0);
+      aux = this.taulell.getTaulell();
+      for(int i = 0; i < nF;++i){
+        for(int j = 0; j < nC; ++j){
+          ArrayList<Casella> adjC = new ArrayList<Casella>(0);
+          adjC = aux.get(i).get(j).getAdjacencies();
+          System.out.println(i+ " , " + j);
+          for(int k = 0; k < adjC.size(); ++k){
+            System.out.println(adjC.get(k).getValor());
+            System.out.print(adjC.get(k).getPosicioI() + " ");
+            System.out.print(adjC.get(k).getPosicioJ());
+            System.out.println();
+          }
+        }
+      }*/
       //this.taulell.imprimirTaulell();
+
       determinarPrincipi(nF, nC);
 
 
@@ -103,32 +119,35 @@ public class Partida {
         t.add(filaT);
       }
       this.taulell.setTaulell(t);
-      this.taulell.imprimirTaulell();
+
     }
     public void determinarPrincipi(int nF, int nC){
       boolean fixat = false;
       Random r = new Random();
 
       while(!fixat){
-      //  System.out.println(fixat);
-        int i = r.nextInt(nF)%nF;
+        //System.out.println(fixat);
+        int iI = r.nextInt(nF*nF)%nF;
         //System.out.println(i);                                           //ERROR AL RANDOM
-        int j = r.nextInt(nC)%nC;
+        int jI = r.nextInt(nC*nC)%nC;
         //System.out.println(j);
         ArrayList<ArrayList<Casella>> tau = new ArrayList<ArrayList<Casella>> (0);
 
         tau = this.taulell.getTaulell();
-        if(tau.get(i).get(j).equals("?")){
+        if(tau.get(iI).get(jI).getValor().equals("?")){
+        tau.get(iI).get(jI).omplirValor("1");
+        this.taulell.setIinicial(iI);
+        this.taulell.setJInicial(jI);
+        this.taulell.llegirTaulellOriginal();
+        fixat = this.taulell.resoldreHidato(tau.get(iI).get(jI));
+        if(!fixat)tau.get(iI).get(jI).omplirValor("?");
 
-        tau.get(i).get(j).omplirValor("1");
-        this.taulell.setIinicial(i);
-        this.taulell.setJInicial(j);
-        fixat = this.taulell.resoldreHidato(this.taulell.getTaulell().get(i).get(j));
         }
+
       }
-      System.out.println("acaba el while");
-      this.taulell.quinaAdj();
-      this.taulell.llegirTaulellOriginal();
+      //this.taulell.resetTaulell();
+
+      this.taulell.imprimirTaulell();
 
 
 
