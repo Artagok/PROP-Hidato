@@ -78,8 +78,9 @@ public class ControladorPresentacio {
     
     public void loginUsr(String usr, String pwd) throws IOException, FileNotFoundException, ClassNotFoundException {
         boolean b1;
-        Boolean b2 = false;
-        b1 = cd.validarLogin(usr, pwd, b2);
+        boolean b2;
+        b2 = cd.comprovarPass(usr,pwd);
+        b1 = cd.validarLogin(usr);
         if(!b1) {
             JOptionPane.showMessageDialog(null,"L'usuari no existex", "Display Message", JOptionPane.INFORMATION_MESSAGE);
         }

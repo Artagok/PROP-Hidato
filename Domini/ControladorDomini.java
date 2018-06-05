@@ -24,20 +24,11 @@ public class ControladorDomini {
         
     }
     
-    public boolean validarLogin(String usr, String pwd, Boolean b1) throws IOException, FileNotFoundException, ClassNotFoundException {
+    public boolean validarLogin(String usr) throws IOException, FileNotFoundException, ClassNotFoundException {
         String jugadorLoaded;
         jugadorLoaded = cpe.cargarJugador(usr);
-        if(jugadorLoaded.equals("noexisteix")) {
-            return false;
-        }
-        
-        else {
-            Jugador j =gson.fromJson(jugadorLoaded, Jugador.class);
-            if ((j.getContrasenya()).equals(pwd)) {
-                b1 = true;
-            }
-            return true;
-        }
+        if(jugadorLoaded.equals("noexisteix"))return false;
+        else return true;
     }
     
     public boolean validarRegisterCd(String usr1, String pwd1, Boolean b) throws IOException, FileNotFoundException, ClassNotFoundException {
@@ -52,4 +43,15 @@ public class ControladorDomini {
         }
         else return false; 
     }
+
+    public boolean comprovarPass(String usr, String pwd) throws IOException, FileNotFoundException, ClassNotFoundException {
+        String jugadorAux;
+        jugadorAux = cpe.cargarJugador(usr);
+        Jugador j =gson.fromJson(jugadorAux, Jugador.class);
+            if ((j.getContrasenya()).equals(pwd)) {
+                return true;
+            }
+            else return false;
+    }
+     
  }
