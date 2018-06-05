@@ -25,21 +25,24 @@ public class ControladorDomini {
     }
     
     public boolean validarLogin(String usr, String pwd, Boolean b1) throws IOException, FileNotFoundException, ClassNotFoundException {
-        String jug = cpe.cargarJugador(usr);
-        if(jug.equals(null)) {
+        String jugadorLoaded;
+        jugadorLoaded = cpe.cargarJugador(usr);
+        if(jugadorLoaded.equals("noexisteix")) {
             return false;
         }
         
         else {
-            Jugador j =gson.fromJson(jug, Jugador.class);
-            b1 =((j.getContrasenya()).equals(pwd));
+            Jugador j =gson.fromJson(jugadorLoaded, Jugador.class);
+            if ((j.getContrasenya()).equals(pwd)) {
+                b1 = true;
+            }
             return true;
         }
     }
     
     public boolean validarRegisterCd(String usr1, String pwd1, Boolean b) throws IOException, FileNotFoundException, ClassNotFoundException {
         
-        if((cpe.cargarJugador(usr1)) == null) {
+        if((cpe.cargarJugador(usr1)).equals("noexisteix")) {
             if(b) {
                Jugador j = new Jugador(usr1,pwd1); 
                String jug = gson.toJson(j);

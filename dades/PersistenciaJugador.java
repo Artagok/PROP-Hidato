@@ -24,7 +24,7 @@ public class PersistenciaJugador {
     
     public String cargarJugador(String usr) throws IOException, ClassNotFoundException {
         ObjectInputStream ois;
-        String jug = null;
+        String jug = "noexisteix";
         try {
             ois = new ObjectInputStream(new FileInputStream(new File(usr)));
             jug = (String) ois.readObject();
