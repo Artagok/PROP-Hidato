@@ -24,30 +24,33 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="BackButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="ExitButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="PlayButton" max="32767" attributes="0"/>
-                  <Component id="LoadGameButton" max="32767" attributes="0"/>
+                  <Component id="GeneraHidatoButton" max="32767" attributes="0"/>
+                  <Component id="DefinirHidatoButton" max="32767" attributes="0"/>
+                  <Component id="ProposarHidatoButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="162" max="32767" attributes="0"/>
+              <EmptySpace pref="135" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-              <Component id="PlayButton" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="LoadGameButton" min="-2" pref="45" max="-2" attributes="0"/>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <Component id="GeneraHidatoButton" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="DefinirHidatoButton" min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="ProposarHidatoButton" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ExitButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BackButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -58,29 +61,31 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="PlayButton">
+    <Component class="javax.swing.JButton" name="GeneraHidatoButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Play"/>
+        <Property name="text" type="java.lang.String" value="Genera Hidato"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PlayButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GeneraHidatoButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="LoadGameButton">
+    <Component class="javax.swing.JButton" name="DefinirHidatoButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Load Game"/>
+        <Property name="text" type="java.lang.String" value="Definir Hidato"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="ProposarHidatoButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Proposar Hidato"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoadGameButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProposarHidatoButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ExitButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BackButton">
       <Properties>

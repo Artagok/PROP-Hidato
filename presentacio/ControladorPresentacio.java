@@ -22,6 +22,7 @@ public class ControladorPresentacio {
     private login l;
     private register r;
     private menu m;
+    private menuplay mp;
     
 
     /**
@@ -64,6 +65,11 @@ public class ControladorPresentacio {
                 ls = new loginsign(this);
                 ls.setVisible(true);
                 break;
+                
+            case "menutypeplay" :
+                mp = new menuplay(this);
+                mp.setVisible(true);
+                break;
             
             default:
                 break;
@@ -71,14 +77,14 @@ public class ControladorPresentacio {
     }
     
     public void loginUsr(String usr, String pwd) throws IOException, FileNotFoundException, ClassNotFoundException {
-        boolean b;
-        Boolean b1 = false;
-        b = cd.validarLogin(usr, pwd, b1);
-        if(!b) {
+        boolean b1;
+        Boolean b2 = false;
+        b1 = cd.validarLogin(usr, pwd, b2);
+        if(!b1) {
             JOptionPane.showMessageDialog(null,"L'usuari no existex", "Display Message", JOptionPane.INFORMATION_MESSAGE);
         }
         else {
-            if(!b1) {
+            if(!b2) {
                 JOptionPane.showMessageDialog(null, "La contrasenya és incorrecta!", "Display Message", JOptionPane.INFORMATION_MESSAGE);
                 
             }
@@ -92,7 +98,8 @@ public class ControladorPresentacio {
     
     public void registerUsr(String usr1, String pwd1, String pwd2) throws IOException, FileNotFoundException, ClassNotFoundException {
         boolean b;
-        Boolean b2 = (pwd1.equals(pwd2));
+        Boolean b2;
+        b2 = pwd1.equals(pwd2);
         b = cd.validarRegisterCd(usr1, pwd1, b2);
         
         
