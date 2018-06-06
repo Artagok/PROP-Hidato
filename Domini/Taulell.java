@@ -126,8 +126,13 @@ public class Taulell {
 
     public int countCasellesNum() {
         int contador = 0;
-        for(int i = 0; i < taulell.size(); i++) {
-            for(int j = 0; j < taulell.get(0).size(); j++) {
+        //System.out.println(this.taulell.get(0).size());
+        //System.out.println(this.getNumFiles());
+        //System.out.println(this.taulell.size());
+        //System.out.println(this.getNumColumnes());
+
+        for(int i = 0; i < this.taulell.size(); i++) {
+            for(int j = 0; j < this.taulell.get(0).size(); j++) {
                 String valor = taulell.get(i).get(j).getValor();
                  if (esNumero(valor)) contador++; //Ara ja no comptem les ?, només estrictament que sigui num
             }
@@ -217,34 +222,11 @@ public class Taulell {
     private void determinarAdjacenciaQC(){
 
         for(int i = 0; i < numFiles; i++){
-
-            Casella aux;
-
             for(int j = 0; j < numColumnes; j++){
-                
-                if (posValida(i+1, j)) {
-                    aux = taulell.get(i+1).get(j);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i-1, j)) {
-                    aux = taulell.get(i-1).get(j);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i, j+1)) {
-                    aux = taulell.get(i).get(j+1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i, j-1)) {
-                    aux = taulell.get(i).get(j-1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
+                if(posValida(i+1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                if(posValida(i-1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
             }
         }
     }
@@ -254,58 +236,16 @@ public class Taulell {
     private void determinarAdjacenciaQCV(){
 
         for(int i = 0; i < numFiles; i++){
-
-            Casella aux;
-
             for(int j = 0; j < numColumnes; j++){
+                if(posValida(i+1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                if(posValida(i-1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
 
-                if (posValida(i+1, j)) {
-                    aux = taulell.get(i+1).get(j);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i-1, j)) {
-                    aux = taulell.get(i-1).get(j);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i, j-1)) {
-                    aux = taulell.get(i).get(j-1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i, j+1)) {
-                    aux = taulell.get(i).get(j+1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i+1, j+1)) {
-                    aux = taulell.get(i+1).get(j+1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i-1, j-1)) {
-                    aux = taulell.get(i-1).get(j-1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i+1, j-1)) {
-                    aux = taulell.get(i+1).get(j-1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
-
-                if (posValida(i-1, j+1)) {
-                    aux = taulell.get(i-1).get(j+1);
-                    if (!aux.getValor().equals("*") && !aux.getValor().equals("#"))
-                        taulell.get(i).get(j).addAdjacencia(aux);
-                }
+                if(posValida(i+1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                if(posValida(i-1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
+                if(posValida(i+1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
+                if(posValida(i-1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
             }
         }
     }
@@ -480,7 +420,10 @@ public class Taulell {
         //System.out.println("numInterrogants = " + numInterrogants.intValue());
         //System.out.println();
 
-        if (countCasellesInterrogant() == 0) return esValid();
+        if (countCasellesInterrogant() == 0){
+            return esValid();
+
+        }
 
         ArrayList<Casella> adjActual = cActual.getAdjacencies();
         String val = Integer.toString(Integer.parseInt(cActual.getValor()) + 1); /* valor Casella actual + 1 */
@@ -499,7 +442,7 @@ public class Taulell {
 
                 adjActual.get(i).omplirValor(val);
                 this.taulell.get(indexI).get(indexJ).omplirValor(val);
-
+                //imprimirTaulell();
                 if (resoldreHidato(this.taulell.get(indexI).get(indexJ))) {
                     return true;
                 }
@@ -535,7 +478,7 @@ public class Taulell {
         boolean numero = true;
         try {
 		Integer.parseInt(s);
-	}
+	   }
         catch(NumberFormatException exc){
             numero = false;
         }
