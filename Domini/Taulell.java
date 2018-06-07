@@ -140,14 +140,12 @@ public class Taulell {
         return contador;
     }
 
-    public void readTaulell() {
+    public void readTaulell(String header, String matriu) {
 
-        Scanner reader = new Scanner(System.in);
-        String line;
         String[] parsedLine;
 
-        line = reader.nextLine();
-        parsedLine = line.split(",");
+        parsedLine = header.split(",");
+        String[] parsedMatriu = matriu.split("\n"); 
 
         this.tipusCasella       = new String(parsedLine[0]);
         this.tipusAdjacencia    = new String(parsedLine[1]);
@@ -155,8 +153,7 @@ public class Taulell {
         this.numColumnes        = Integer.parseInt(parsedLine[3]);
 
         for (int i = 0; i < numFiles; ++i) {
-
-            line        = new String(reader.nextLine());
+            String line        = parsedMatriu[i];
             parsedLine  = line.split(",");
 
             ArrayList<Casella> vAux = new ArrayList<Casella> (0);
@@ -220,13 +217,30 @@ public class Taulell {
     }
 
     private void determinarAdjacenciaQC(){
-
+        String aux;
         for(int i = 0; i < numFiles; i++){
             for(int j = 0; j < numColumnes; j++){
-                if(posValida(i+1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                if(posValida(i-1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                if(posValida(i+1, j)) {
+                    aux = new String(taulell.get(i+1).get(j).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                    
+                }
+                if(posValida(i-1, j)){
+                    aux = new String(taulell.get(i-1).get(j).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                }
+                if(posValida(i, j+1)) {
+                    aux = new String(taulell.get(i).get(j+1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                }
+                if(posValida(i, j-1)){
+                    aux = new String(taulell.get(i).get(j-1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                }
             }
         }
     }
@@ -234,18 +248,50 @@ public class Taulell {
     /* Compte, més endavant potser tenim problemes amb l'aliasing, estem afegint al vector d'ajacencies un punter a Casella (caldria fer new amb creadora per copia, etc per evitar-ho)*/
 
     private void determinarAdjacenciaQCV(){
-
+        String aux;
         for(int i = 0; i < numFiles; i++){
             for(int j = 0; j < numColumnes; j++){
-                if(posValida(i+1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                if(posValida(i-1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                if(posValida(i+1, j)){
+                    aux = new String(taulell.get(i+1).get(j).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                }
+                if(posValida(i-1, j)){
+                    aux = new String(taulell.get(i-1).get(j).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                }
+                if(posValida(i, j+1)){
+                    aux = new String(taulell.get(i).get(j+1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                }
+                if(posValida(i, j-1)){
+                    aux = new String(taulell.get(i).get(j-1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                }
 
-                if(posValida(i+1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
-                if(posValida(i-1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
-                if(posValida(i+1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
-                if(posValida(i-1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                if(posValida(i+1, j+1)) {
+                    aux = new String(taulell.get(i+1).get(j+1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                }
+                if(posValida(i-1, j-1)) {
+                    aux = new String(taulell.get(i-1).get(j-1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
+                }
+                if(posValida(i+1, j-1)) {
+                    aux = new String(taulell.get(i+1).get(j-1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
+                }
+                if(posValida(i-1, j+1)) {
+                    aux = new String(taulell.get(i-1).get(j+1).getValor());
+                    if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                }
             }
         }
     }
@@ -255,33 +301,81 @@ public class Taulell {
     /* Fila senar   --> el primer triangle te base a dalt, el següent [j+1] base a baix, i es va repetint */
 
     private void determinarAdjacenciaTC(){
-
+        String aux;
         for(int i = 0; i < numFiles; i++){
             for(int j = 0; j < numColumnes; j++){
                 if(i%2 == 0){                       //comenSa per triangle amb base abaix
                     if(j%2 == 0){                   //base abaix
-                        if(posValida(i+1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                        if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                        if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        if(posValida(i+1, j)) {
+                            aux = new String(taulell.get(i+1).get(j).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                        }
+                        if(posValida(i, j+1)){
+                            aux = new String(taulell.get(i).get(j+1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                        }
+                        if(posValida(i, j-1)) {
+                            aux = new String(taulell.get(i).get(j-1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        }
 
                     }
                     else {                          //base adalt
-                        if(posValida(i-1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                        if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                        if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        if(posValida(i-1, j)) {
+                            aux = new String(taulell.get(i-1).get(j).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                        }
+                        if(posValida(i, j+1)) {
+                            aux = new String(taulell.get(i).get(j+1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                        }
+                        if(posValida(i, j-1)) {
+                            aux = new String(taulell.get(i).get(j-1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        }
                     }
                 }
                 else {
                     if(j%2 != 0){                   //base abaix
-                        if(posValida(i+1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                        if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                        if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        if(posValida(i+1, j)) {
+                            aux = new String(taulell.get(i+1).get(j).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                        }
+                        if(posValida(i, j+1)) {
+                            aux = new String(taulell.get(i).get(j+1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                        }
+                        if(posValida(i, j-1)) {
+                            aux = new String(taulell.get(i).get(j-1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        }
 
                     }
                     else {                          //base adalt
-                        if(posValida(i-1, j)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                        if(posValida(i, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                        if(posValida(i, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        if(posValida(i-1, j)) {
+                            aux = new String(taulell.get(i-1).get(j).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                        }
+                        if(posValida(i, j+1)) {
+                            aux = new String(taulell.get(i).get(j+1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                        }
+                        if(posValida(i, j-1)) {
+                            aux = new String(taulell.get(i).get(j-1).getValor());
+                            if(!aux.equals("#") && !aux.equals("*"))
+                                taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                        }
                     }
                 }
             }
@@ -289,70 +383,214 @@ public class Taulell {
     }
 
     private void determinarAdjacenciaTCV(){
-
+       String aux;
        for(int i = 0; i < numFiles; i++){
             for(int j = 0; j < numColumnes; j++){
 
                 /* Base a baix */
                 if ( (i%2 == 0 && j%2 == 0) || (i%2 != 0 && j%2 != 0) ) {
 
-                    if(posValida(i-1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
-                    if(posValida(i-1, j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                    if(posValida(i-1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                    if(posValida(i-1, j-1)){
+                        aux = new String(taulell.get(i-1).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
+                    }
+                    if(posValida(i-1, j))  {
+                        aux = new String(taulell.get(i-1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                    }
+                    if(posValida(i-1, j+1)) {
+                        aux = new String(taulell.get(i-1).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                    }
 
-                    if(posValida(i, j-2))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-2));
-                    if(posValida(i, j-1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
-                    if(posValida(i, j+1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                    if(posValida(i, j+2))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+2));
+                    if(posValida(i, j-2))  {
+                        aux = new String(taulell.get(i).get(j-2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-2));
+                    }
+                    if(posValida(i, j-1))  {
+                        aux = new String(taulell.get(i).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                    }
+                    if(posValida(i, j+1))  {
+                        aux = new String(taulell.get(i).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                    }
+                    if(posValida(i, j+2))  {
+                        aux = new String(taulell.get(i).get(j+2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+2));
+                    }
 
-                    if(posValida(i+1, j-2)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-2));
-                    if(posValida(i+1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
-                    if(posValida(i+1, j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                    if(posValida(i+1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
-                    if(posValida(i+1, j+2)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+2));
+                    if(posValida(i+1, j-2)) {
+                        aux = new String(taulell.get(i+1).get(j-2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-2));
+                    }
+                    if(posValida(i+1, j-1)) {
+                        aux = new String(taulell.get(i+1).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
+                    }
+                    if(posValida(i+1, j))  {
+                        aux = new String(taulell.get(i+1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                    }
+                    if(posValida(i+1, j+1)) {
+                        aux = new String(taulell.get(i+1).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                    }
+                    if(posValida(i+1, j+2)) {
+                        aux = new String(taulell.get(i+1).get(j+2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+2));
+                    }
                 }
 
                 /* Base a dalt */
                 else {
-                    if(posValida(i-1, j-2)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-2));
-                    if(posValida(i-1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
-                    if(posValida(i-1, j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                    if(posValida(i-1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
-                    if(posValida(i-1, j+2)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+2));
+                    if(posValida(i-1, j-2)) {
+                        aux = new String(taulell.get(i-1).get(j-2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-2));
+                    }
+                    if(posValida(i-1, j-1)) {
+                        aux = new String(taulell.get(i-1).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
+                    }
+                    if(posValida(i-1, j))  {
+                        aux = new String(taulell.get(i-1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                        taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                    }
+                    if(posValida(i-1, j+1)) {
+                        aux = new String(taulell.get(i-1).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                    }
+                    if(posValida(i-1, j+2)) {
+                        aux = new String(taulell.get(i-1).get(j+2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))    
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+2));
+                    }
 
-                    if(posValida(i, j-2))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-2));
-                    if(posValida(i, j-1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
-                    if(posValida(i, j+1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                    if(posValida(i, j+2))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+2));
+                    if(posValida(i, j-2))  {
+                        aux = new String(taulell.get(i).get(j-2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))   
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-2));
+                    }
+                    if(posValida(i, j-1))  {
+                        aux = new String(taulell.get(i).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))   
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                    }
+                    if(posValida(i, j+1))  {
+                        aux = new String(taulell.get(i).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))   
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                    }
+                    if(posValida(i, j+2))   {
+                        aux = new String(taulell.get(i).get(j+2).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))   
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+2));
+                    }
 
-                    if(posValida(i+1, j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
-                    if(posValida(i+1, j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                    if(posValida(i+1, j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                    if(posValida(i+1, j-1)) {
+                        aux = new String(taulell.get(i+1).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
+                    }
+                    if(posValida(i+1, j))  {
+                        aux = new String(taulell.get(i+1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                    }
+                    if(posValida(i+1, j+1)) {
+                        aux = new String(taulell.get(i+1).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                    }
                 }
             }
         }
     }
 
     private void determinarAdjacenciaH() {
-
+        String aux;
         for (int i = 0; i < numFiles; i++) {
             for (int j = 0; j < numColumnes; j++) {
 
                 if (j%2 == 0) {
-                    if (posValida(i-1,j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                    if (posValida(i,j-1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
-                    if (posValida(i,j+1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                    if (posValida(i+1,j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
-                    if (posValida(i+1,j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                    if (posValida(i+1,j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                    if (posValida(i-1,j)) {
+                        aux = new String(taulell.get(i-1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                    }
+                    if (posValida(i,j-1)) {
+                        aux = new String(taulell.get(i).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                    }
+                    if (posValida(i,j+1)) {
+                        aux = new String(taulell.get(i).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                    }
+                    if (posValida(i+1,j-1)) {
+                        aux = new String(taulell.get(i+1).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j-1));
+                    }
+                    if (posValida(i+1,j))  {
+                        aux = new String(taulell.get(i+1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                    }
+                    if (posValida(i+1,j+1)) {
+                        aux = new String(taulell.get(i+1).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j+1));
+                    }
                 }
                 else {
-                    if (posValida(i+1,j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
-                    if (posValida(i,j-1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
-                    if (posValida(i,j+1))   taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
-                    if (posValida(i-1,j-1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
-                    if (posValida(i-1,j))   taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
-                    if (posValida(i-1,j+1)) taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                    if (posValida(i+1,j)) {
+                        aux = new String(taulell.get(i+1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i+1).get(j));
+                    }
+                    if (posValida(i,j-1)) {
+                        aux = new String(taulell.get(i).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j-1));
+                    }
+                    if (posValida(i,j+1)) {
+                        aux = new String(taulell.get(i).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i).get(j+1));
+                    }
+                    if (posValida(i-1,j-1)) {
+                        aux = new String(taulell.get(i-1).get(j-1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j-1));
+                    }
+                    if (posValida(i-1,j)) {
+                        aux = new String(taulell.get(i-1).get(j).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j));
+                    }
+                    if (posValida(i-1,j+1)) {
+                        aux = new String(taulell.get(i-1).get(j+1).getValor());
+                        if(!aux.equals("#") && !aux.equals("*"))
+                            taulell.get(i).get(j).addAdjacencia(taulell.get(i-1).get(j+1));
+                    }
                 }
             }
         }
