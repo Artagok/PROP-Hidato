@@ -123,7 +123,7 @@ public class menuplay extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        cp.canviEscena("menuplayloadrank");
+        cp.canviEscena("menuplay");
         this.setVisible(false);
     }//GEN-LAST:event_BackButtonActionPerformed
 

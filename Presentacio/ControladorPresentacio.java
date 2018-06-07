@@ -152,6 +152,7 @@ public class ControladorPresentacio {
         if(b) {
             JOptionPane.showMessageDialog(null,"El teu hidato proposat és vàlid","Display Message", JOptionPane.INFORMATION_MESSAGE);
             //aqui pasarem el hidato pq el generi per j
+          
             vjt = new vistaJugarTaulell(this);
             vjt.setVars(header,matriu);
             vjt.setVisible(true);

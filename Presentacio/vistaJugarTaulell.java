@@ -6,6 +6,7 @@
 package Presentacio;
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -26,18 +27,17 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
     
     public vistaJugarTaulell() {
         initComponents();
-        initMatriu();
     }
 
     public vistaJugarTaulell(ControladorPresentacio cp) {
         initComponents();
         this.cp = cp;
-       
     }
     
     public void setVars(String header, String matriu) {
-        this.header = header;
-        this.matriu = matriu;
+        this.header = new String(header);
+        this.matriu = new String(matriu);
+        initMatriu();
     }
     
     private void initMatriu() {
@@ -45,7 +45,7 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         java.awt.Component[] textFieldArray;
         textFieldArray = jPanel1.getComponents();
         
-        String [] files = matriu.split("\n");
+        String[] files = this.matriu.split("\n");
         int index = 0;
         
         for (int i = 0; i < this.NUM_FILES; ++i) {
@@ -58,14 +58,34 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
                 
                 if (individuals[j].equals("#")) {
                     
-                    field.setVisible(false);
+                    field.setVisible(true);
+                    field.setOpaque(true);
+                    field.setBackground(new Color(238,238,238));
+                    field.setBorder(BorderFactory.createLineBorder(new Color(238,238,238)));
                 }
                 
-                if (individuals[j].equals("*")) {
+                else if (individuals[j].equals("*")) {
                     
                     field.setBackground(Color.ORANGE);
+                    field.setVisible(true);
                 }
                 
+                else if (individuals[j].equals("?")) {
+                    
+                    field.setVisible(true);
+                    field.setEnabled(true);
+                    field.setFocusable(true);
+                    field.setEditable(true);
+                }
+                
+                else {
+                    
+                    field.setVisible(true);
+                    field.setEnabled(true);
+                    field.setFocusable(true);
+                    field.setText(individuals[j]);
+                }
+                ++index;
             }
         }
     }
@@ -334,955 +354,717 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextField1.setEditable(false);
-        jTextField1.setEnabled(false);
         jTextField1.setFocusable(false);
 
         jTextField2.setEditable(false);
-        jTextField2.setEnabled(false);
         jTextField2.setFocusable(false);
 
         jTextField3.setEditable(false);
-        jTextField3.setEnabled(false);
         jTextField3.setFocusable(false);
 
         jTextField4.setEditable(false);
-        jTextField4.setEnabled(false);
         jTextField4.setFocusable(false);
 
         jTextField5.setEditable(false);
-        jTextField5.setEnabled(false);
         jTextField5.setFocusable(false);
 
         jTextField6.setEditable(false);
-        jTextField6.setEnabled(false);
         jTextField6.setFocusable(false);
 
         jTextField7.setEditable(false);
-        jTextField7.setEnabled(false);
         jTextField7.setFocusable(false);
 
         jTextField8.setEditable(false);
-        jTextField8.setEnabled(false);
         jTextField8.setFocusable(false);
 
         jTextField9.setEditable(false);
-        jTextField9.setEnabled(false);
         jTextField9.setFocusable(false);
 
         jTextField10.setEditable(false);
-        jTextField10.setEnabled(false);
         jTextField10.setFocusable(false);
 
         jTextField11.setEditable(false);
-        jTextField11.setEnabled(false);
         jTextField11.setFocusable(false);
 
         jTextField12.setEditable(false);
-        jTextField12.setEnabled(false);
         jTextField12.setFocusable(false);
 
         jTextField13.setEditable(false);
-        jTextField13.setEnabled(false);
         jTextField13.setFocusable(false);
 
         jTextField146.setEditable(false);
-        jTextField146.setEnabled(false);
         jTextField146.setFocusable(false);
 
         jTextField147.setEditable(false);
-        jTextField147.setEnabled(false);
         jTextField147.setFocusable(false);
 
         jTextField148.setEditable(false);
-        jTextField148.setEnabled(false);
         jTextField148.setFocusable(false);
 
         jTextField149.setEditable(false);
-        jTextField149.setEnabled(false);
         jTextField149.setFocusable(false);
 
         jTextField150.setEditable(false);
-        jTextField150.setEnabled(false);
         jTextField150.setFocusable(false);
 
         jTextField151.setEditable(false);
-        jTextField151.setEnabled(false);
         jTextField151.setFocusable(false);
 
         jTextField152.setEditable(false);
-        jTextField152.setEnabled(false);
         jTextField152.setFocusable(false);
 
         jTextField153.setEditable(false);
-        jTextField153.setEnabled(false);
         jTextField153.setFocusable(false);
 
         jTextField154.setEditable(false);
-        jTextField154.setEnabled(false);
         jTextField154.setFocusable(false);
 
         jTextField155.setEditable(false);
-        jTextField155.setEnabled(false);
         jTextField155.setFocusable(false);
 
         jTextField156.setEditable(false);
-        jTextField156.setEnabled(false);
         jTextField156.setFocusable(false);
 
         jTextField157.setEditable(false);
-        jTextField157.setEnabled(false);
         jTextField157.setFocusable(false);
 
         jTextField158.setEditable(false);
-        jTextField158.setEnabled(false);
         jTextField158.setFocusable(false);
 
         jTextField159.setEditable(false);
-        jTextField159.setEnabled(false);
         jTextField159.setFocusable(false);
 
         jTextField160.setEditable(false);
-        jTextField160.setEnabled(false);
         jTextField160.setFocusable(false);
 
         jTextField161.setEditable(false);
-        jTextField161.setEnabled(false);
         jTextField161.setFocusable(false);
 
         jTextField162.setEditable(false);
-        jTextField162.setEnabled(false);
         jTextField162.setFocusable(false);
 
         jTextField163.setEditable(false);
-        jTextField163.setEnabled(false);
         jTextField163.setFocusable(false);
 
         jTextField164.setEditable(false);
-        jTextField164.setEnabled(false);
         jTextField164.setFocusable(false);
 
         jTextField165.setEditable(false);
-        jTextField165.setEnabled(false);
         jTextField165.setFocusable(false);
 
         jTextField166.setEditable(false);
-        jTextField166.setEnabled(false);
         jTextField166.setFocusable(false);
 
         jTextField167.setEditable(false);
-        jTextField167.setEnabled(false);
         jTextField167.setFocusable(false);
 
         jTextField168.setEditable(false);
-        jTextField168.setEnabled(false);
         jTextField168.setFocusable(false);
 
         jTextField169.setEditable(false);
-        jTextField169.setEnabled(false);
         jTextField169.setFocusable(false);
 
         jTextField170.setEditable(false);
-        jTextField170.setEnabled(false);
         jTextField170.setFocusable(false);
 
         jTextField171.setEditable(false);
-        jTextField171.setEnabled(false);
         jTextField171.setFocusable(false);
 
         jTextField172.setEditable(false);
-        jTextField172.setEnabled(false);
         jTextField172.setFocusable(false);
 
         jTextField173.setEditable(false);
-        jTextField173.setEnabled(false);
         jTextField173.setFocusable(false);
 
         jTextField174.setEditable(false);
-        jTextField174.setEnabled(false);
         jTextField174.setFocusable(false);
 
         jTextField175.setEditable(false);
-        jTextField175.setEnabled(false);
         jTextField175.setFocusable(false);
 
         jTextField176.setEditable(false);
-        jTextField176.setEnabled(false);
         jTextField176.setFocusable(false);
 
         jTextField177.setEditable(false);
-        jTextField177.setEnabled(false);
         jTextField177.setFocusable(false);
 
         jTextField178.setEditable(false);
-        jTextField178.setEnabled(false);
         jTextField178.setFocusable(false);
 
         jTextField179.setEditable(false);
-        jTextField179.setEnabled(false);
         jTextField179.setFocusable(false);
 
         jTextField180.setEditable(false);
-        jTextField180.setEnabled(false);
         jTextField180.setFocusable(false);
 
         jTextField181.setEditable(false);
-        jTextField181.setEnabled(false);
         jTextField181.setFocusable(false);
 
         jTextField182.setEditable(false);
-        jTextField182.setEnabled(false);
         jTextField182.setFocusable(false);
 
         jTextField183.setEditable(false);
-        jTextField183.setEnabled(false);
         jTextField183.setFocusable(false);
 
         jTextField184.setEditable(false);
-        jTextField184.setEnabled(false);
         jTextField184.setFocusable(false);
 
         jTextField185.setEditable(false);
-        jTextField185.setEnabled(false);
         jTextField185.setFocusable(false);
 
         jTextField186.setEditable(false);
-        jTextField186.setEnabled(false);
         jTextField186.setFocusable(false);
 
         jTextField187.setEditable(false);
-        jTextField187.setEnabled(false);
         jTextField187.setFocusable(false);
 
         jTextField188.setEditable(false);
-        jTextField188.setEnabled(false);
         jTextField188.setFocusable(false);
 
         jTextField189.setEditable(false);
-        jTextField189.setEnabled(false);
         jTextField189.setFocusable(false);
 
         jTextField190.setEditable(false);
-        jTextField190.setEnabled(false);
         jTextField190.setFocusable(false);
 
         jTextField191.setEditable(false);
-        jTextField191.setEnabled(false);
         jTextField191.setFocusable(false);
 
         jTextField192.setEditable(false);
-        jTextField192.setEnabled(false);
         jTextField192.setFocusable(false);
 
         jTextField193.setEditable(false);
-        jTextField193.setEnabled(false);
         jTextField193.setFocusable(false);
 
         jTextField194.setEditable(false);
-        jTextField194.setEnabled(false);
         jTextField194.setFocusable(false);
 
         jTextField195.setEditable(false);
-        jTextField195.setEnabled(false);
         jTextField195.setFocusable(false);
 
         jTextField196.setEditable(false);
-        jTextField196.setEnabled(false);
         jTextField196.setFocusable(false);
 
         jTextField197.setEditable(false);
-        jTextField197.setEnabled(false);
         jTextField197.setFocusable(false);
 
         jTextField198.setEditable(false);
-        jTextField198.setEnabled(false);
         jTextField198.setFocusable(false);
 
         jTextField199.setEditable(false);
-        jTextField199.setEnabled(false);
         jTextField199.setFocusable(false);
 
         jTextField200.setEditable(false);
-        jTextField200.setEnabled(false);
         jTextField200.setFocusable(false);
 
         jTextField201.setEditable(false);
-        jTextField201.setEnabled(false);
         jTextField201.setFocusable(false);
 
         jTextField202.setEditable(false);
-        jTextField202.setEnabled(false);
         jTextField202.setFocusable(false);
 
         jTextField203.setEditable(false);
-        jTextField203.setEnabled(false);
         jTextField203.setFocusable(false);
 
         jTextField204.setEditable(false);
-        jTextField204.setEnabled(false);
         jTextField204.setFocusable(false);
 
         jTextField205.setEditable(false);
-        jTextField205.setEnabled(false);
         jTextField205.setFocusable(false);
 
         jTextField206.setEditable(false);
-        jTextField206.setEnabled(false);
         jTextField206.setFocusable(false);
 
         jTextField207.setEditable(false);
-        jTextField207.setEnabled(false);
         jTextField207.setFocusable(false);
 
         jTextField208.setEditable(false);
-        jTextField208.setEnabled(false);
         jTextField208.setFocusable(false);
 
         jTextField209.setEditable(false);
-        jTextField209.setEnabled(false);
         jTextField209.setFocusable(false);
 
         jTextField210.setEditable(false);
-        jTextField210.setEnabled(false);
         jTextField210.setFocusable(false);
 
         jTextField211.setEditable(false);
-        jTextField211.setEnabled(false);
         jTextField211.setFocusable(false);
 
         jTextField212.setEditable(false);
-        jTextField212.setEnabled(false);
         jTextField212.setFocusable(false);
 
         jTextField213.setEditable(false);
-        jTextField213.setEnabled(false);
         jTextField213.setFocusable(false);
 
         jTextField214.setEditable(false);
-        jTextField214.setEnabled(false);
         jTextField214.setFocusable(false);
 
         jTextField215.setEditable(false);
-        jTextField215.setEnabled(false);
         jTextField215.setFocusable(false);
 
         jTextField216.setEditable(false);
-        jTextField216.setEnabled(false);
         jTextField216.setFocusable(false);
 
         jTextField217.setEditable(false);
-        jTextField217.setEnabled(false);
         jTextField217.setFocusable(false);
 
         jTextField218.setEditable(false);
-        jTextField218.setEnabled(false);
         jTextField218.setFocusable(false);
 
         jTextField219.setEditable(false);
-        jTextField219.setEnabled(false);
         jTextField219.setFocusable(false);
 
         jTextField220.setEditable(false);
-        jTextField220.setEnabled(false);
         jTextField220.setFocusable(false);
 
         jTextField221.setEditable(false);
-        jTextField221.setEnabled(false);
         jTextField221.setFocusable(false);
 
         jTextField222.setEditable(false);
-        jTextField222.setEnabled(false);
         jTextField222.setFocusable(false);
 
         jTextField223.setEditable(false);
-        jTextField223.setEnabled(false);
         jTextField223.setFocusable(false);
 
         jTextField224.setEditable(false);
-        jTextField224.setEnabled(false);
         jTextField224.setFocusable(false);
 
         jTextField225.setEditable(false);
-        jTextField225.setEnabled(false);
         jTextField225.setFocusable(false);
 
         jTextField226.setEditable(false);
-        jTextField226.setEnabled(false);
         jTextField226.setFocusable(false);
 
         jTextField227.setEditable(false);
-        jTextField227.setEnabled(false);
         jTextField227.setFocusable(false);
 
         jTextField228.setEditable(false);
-        jTextField228.setEnabled(false);
         jTextField228.setFocusable(false);
 
         jTextField229.setEditable(false);
-        jTextField229.setEnabled(false);
         jTextField229.setFocusable(false);
 
         jTextField230.setEditable(false);
-        jTextField230.setEnabled(false);
         jTextField230.setFocusable(false);
 
         jTextField231.setEditable(false);
-        jTextField231.setEnabled(false);
         jTextField231.setFocusable(false);
 
         jTextField232.setEditable(false);
-        jTextField232.setEnabled(false);
         jTextField232.setFocusable(false);
 
         jTextField233.setEditable(false);
-        jTextField233.setEnabled(false);
         jTextField233.setFocusable(false);
 
         jTextField234.setEditable(false);
-        jTextField234.setEnabled(false);
         jTextField234.setFocusable(false);
 
         jTextField235.setEditable(false);
-        jTextField235.setEnabled(false);
         jTextField235.setFocusable(false);
 
         jTextField236.setEditable(false);
-        jTextField236.setEnabled(false);
         jTextField236.setFocusable(false);
 
         jTextField237.setEditable(false);
-        jTextField237.setEnabled(false);
         jTextField237.setFocusable(false);
 
         jTextField238.setEditable(false);
-        jTextField238.setEnabled(false);
         jTextField238.setFocusable(false);
 
         jTextField239.setEditable(false);
-        jTextField239.setEnabled(false);
         jTextField239.setFocusable(false);
 
         jTextField240.setEditable(false);
-        jTextField240.setEnabled(false);
         jTextField240.setFocusable(false);
 
         jTextField241.setEditable(false);
-        jTextField241.setEnabled(false);
         jTextField241.setFocusable(false);
 
         jTextField242.setEditable(false);
-        jTextField242.setEnabled(false);
         jTextField242.setFocusable(false);
 
         jTextField243.setEditable(false);
-        jTextField243.setEnabled(false);
         jTextField243.setFocusable(false);
 
         jTextField244.setEditable(false);
-        jTextField244.setEnabled(false);
         jTextField244.setFocusable(false);
 
         jTextField245.setEditable(false);
-        jTextField245.setEnabled(false);
         jTextField245.setFocusable(false);
 
         jTextField246.setEditable(false);
-        jTextField246.setEnabled(false);
         jTextField246.setFocusable(false);
 
         jTextField247.setEditable(false);
-        jTextField247.setEnabled(false);
         jTextField247.setFocusable(false);
 
         jTextField248.setEditable(false);
-        jTextField248.setEnabled(false);
         jTextField248.setFocusable(false);
 
         jTextField249.setEditable(false);
-        jTextField249.setEnabled(false);
         jTextField249.setFocusable(false);
 
         jTextField250.setEditable(false);
-        jTextField250.setEnabled(false);
         jTextField250.setFocusable(false);
 
         jTextField251.setEditable(false);
-        jTextField251.setEnabled(false);
         jTextField251.setFocusable(false);
 
         jTextField252.setEditable(false);
-        jTextField252.setEnabled(false);
         jTextField252.setFocusable(false);
 
         jTextField253.setEditable(false);
-        jTextField253.setEnabled(false);
         jTextField253.setFocusable(false);
 
         jTextField254.setEditable(false);
-        jTextField254.setEnabled(false);
         jTextField254.setFocusable(false);
 
         jTextField255.setEditable(false);
-        jTextField255.setEnabled(false);
         jTextField255.setFocusable(false);
 
         jTextField256.setEditable(false);
-        jTextField256.setEnabled(false);
         jTextField256.setFocusable(false);
 
         jTextField257.setEditable(false);
-        jTextField257.setEnabled(false);
         jTextField257.setFocusable(false);
 
         jTextField258.setEditable(false);
-        jTextField258.setEnabled(false);
         jTextField258.setFocusable(false);
 
         jTextField259.setEditable(false);
-        jTextField259.setEnabled(false);
         jTextField259.setFocusable(false);
 
         jTextField260.setEditable(false);
-        jTextField260.setEnabled(false);
         jTextField260.setFocusable(false);
 
         jTextField261.setEditable(false);
-        jTextField261.setEnabled(false);
         jTextField261.setFocusable(false);
 
         jTextField262.setEditable(false);
-        jTextField262.setEnabled(false);
         jTextField262.setFocusable(false);
 
         jTextField263.setEditable(false);
-        jTextField263.setEnabled(false);
         jTextField263.setFocusable(false);
 
         jTextField264.setEditable(false);
-        jTextField264.setEnabled(false);
         jTextField264.setFocusable(false);
 
         jTextField265.setEditable(false);
-        jTextField265.setEnabled(false);
         jTextField265.setFocusable(false);
 
         jTextField266.setEditable(false);
-        jTextField266.setEnabled(false);
         jTextField266.setFocusable(false);
 
         jTextField267.setEditable(false);
-        jTextField267.setEnabled(false);
         jTextField267.setFocusable(false);
 
         jTextField268.setEditable(false);
-        jTextField268.setEnabled(false);
         jTextField268.setFocusable(false);
 
         jTextField269.setEditable(false);
-        jTextField269.setEnabled(false);
         jTextField269.setFocusable(false);
 
         jTextField270.setEditable(false);
-        jTextField270.setEnabled(false);
         jTextField270.setFocusable(false);
 
         jTextField271.setEditable(false);
-        jTextField271.setEnabled(false);
         jTextField271.setFocusable(false);
 
         jTextField272.setEditable(false);
-        jTextField272.setEnabled(false);
         jTextField272.setFocusable(false);
 
         jTextField273.setEditable(false);
-        jTextField273.setEnabled(false);
         jTextField273.setFocusable(false);
 
         jTextField274.setEditable(false);
-        jTextField274.setEnabled(false);
         jTextField274.setFocusable(false);
 
         jTextField275.setEditable(false);
-        jTextField275.setEnabled(false);
         jTextField275.setFocusable(false);
 
         jTextField276.setEditable(false);
-        jTextField276.setEnabled(false);
         jTextField276.setFocusable(false);
 
         jTextField277.setEditable(false);
-        jTextField277.setEnabled(false);
         jTextField277.setFocusable(false);
 
         jTextField278.setEditable(false);
-        jTextField278.setEnabled(false);
         jTextField278.setFocusable(false);
 
         jTextField279.setEditable(false);
-        jTextField279.setEnabled(false);
         jTextField279.setFocusable(false);
 
         jTextField280.setEditable(false);
-        jTextField280.setEnabled(false);
         jTextField280.setFocusable(false);
 
         jTextField281.setEditable(false);
-        jTextField281.setEnabled(false);
         jTextField281.setFocusable(false);
 
         jTextField282.setEditable(false);
-        jTextField282.setEnabled(false);
         jTextField282.setFocusable(false);
 
         jTextField283.setEditable(false);
-        jTextField283.setEnabled(false);
         jTextField283.setFocusable(false);
 
         jTextField284.setEditable(false);
-        jTextField284.setEnabled(false);
         jTextField284.setFocusable(false);
 
         jTextField285.setEditable(false);
-        jTextField285.setEnabled(false);
         jTextField285.setFocusable(false);
 
         jTextField286.setEditable(false);
-        jTextField286.setEnabled(false);
         jTextField286.setFocusable(false);
 
         jTextField287.setEditable(false);
-        jTextField287.setEnabled(false);
         jTextField287.setFocusable(false);
 
         jTextField288.setEditable(false);
-        jTextField288.setEnabled(false);
         jTextField288.setFocusable(false);
 
         jTextField289.setEditable(false);
-        jTextField289.setEnabled(false);
         jTextField289.setFocusable(false);
 
         jTextField290.setEditable(false);
-        jTextField290.setEnabled(false);
         jTextField290.setFocusable(false);
 
         jTextField291.setEditable(false);
-        jTextField291.setEnabled(false);
         jTextField291.setFocusable(false);
 
         jTextField292.setEditable(false);
-        jTextField292.setEnabled(false);
         jTextField292.setFocusable(false);
 
         jTextField293.setEditable(false);
-        jTextField293.setEnabled(false);
         jTextField293.setFocusable(false);
 
         jTextField294.setEditable(false);
-        jTextField294.setEnabled(false);
         jTextField294.setFocusable(false);
 
         jTextField295.setEditable(false);
-        jTextField295.setEnabled(false);
         jTextField295.setFocusable(false);
 
         jTextField296.setEditable(false);
-        jTextField296.setEnabled(false);
         jTextField296.setFocusable(false);
 
         jTextField297.setEditable(false);
-        jTextField297.setEnabled(false);
         jTextField297.setFocusable(false);
 
         jTextField298.setEditable(false);
-        jTextField298.setEnabled(false);
         jTextField298.setFocusable(false);
 
         jTextField299.setEditable(false);
-        jTextField299.setEnabled(false);
         jTextField299.setFocusable(false);
 
         jTextField300.setEditable(false);
-        jTextField300.setEnabled(false);
         jTextField300.setFocusable(false);
 
         jTextField301.setEditable(false);
-        jTextField301.setEnabled(false);
         jTextField301.setFocusable(false);
 
         jTextField302.setEditable(false);
-        jTextField302.setEnabled(false);
         jTextField302.setFocusable(false);
 
         jTextField303.setEditable(false);
-        jTextField303.setEnabled(false);
         jTextField303.setFocusable(false);
 
         jTextField304.setEditable(false);
-        jTextField304.setEnabled(false);
         jTextField304.setFocusable(false);
 
         jTextField305.setEditable(false);
-        jTextField305.setEnabled(false);
         jTextField305.setFocusable(false);
 
         jTextField306.setEditable(false);
-        jTextField306.setEnabled(false);
         jTextField306.setFocusable(false);
 
         jTextField307.setEditable(false);
-        jTextField307.setEnabled(false);
         jTextField307.setFocusable(false);
 
         jTextField308.setEditable(false);
-        jTextField308.setEnabled(false);
         jTextField308.setFocusable(false);
 
         jTextField309.setEditable(false);
-        jTextField309.setEnabled(false);
         jTextField309.setFocusable(false);
 
         jTextField310.setEditable(false);
-        jTextField310.setEnabled(false);
         jTextField310.setFocusable(false);
 
         jTextField311.setEditable(false);
-        jTextField311.setEnabled(false);
         jTextField311.setFocusable(false);
 
         jTextField312.setEditable(false);
-        jTextField312.setEnabled(false);
         jTextField312.setFocusable(false);
 
         jTextField313.setEditable(false);
-        jTextField313.setEnabled(false);
         jTextField313.setFocusable(false);
 
         jTextField314.setEditable(false);
-        jTextField314.setEnabled(false);
         jTextField314.setFocusable(false);
 
         jTextField315.setEditable(false);
-        jTextField315.setEnabled(false);
         jTextField315.setFocusable(false);
 
         jTextField316.setEditable(false);
-        jTextField316.setEnabled(false);
         jTextField316.setFocusable(false);
 
         jTextField317.setEditable(false);
-        jTextField317.setEnabled(false);
         jTextField317.setFocusable(false);
 
         jTextField318.setEditable(false);
-        jTextField318.setEnabled(false);
         jTextField318.setFocusable(false);
 
         jTextField319.setEditable(false);
-        jTextField319.setEnabled(false);
         jTextField319.setFocusable(false);
 
         jTextField320.setEditable(false);
-        jTextField320.setEnabled(false);
         jTextField320.setFocusable(false);
 
         jTextField321.setEditable(false);
-        jTextField321.setEnabled(false);
         jTextField321.setFocusable(false);
 
         jTextField322.setEditable(false);
-        jTextField322.setEnabled(false);
         jTextField322.setFocusable(false);
 
         jTextField323.setEditable(false);
-        jTextField323.setEnabled(false);
         jTextField323.setFocusable(false);
 
         jTextField324.setEditable(false);
-        jTextField324.setEnabled(false);
         jTextField324.setFocusable(false);
 
         jTextField325.setEditable(false);
-        jTextField325.setEnabled(false);
         jTextField325.setFocusable(false);
 
         jTextField326.setEditable(false);
-        jTextField326.setEnabled(false);
         jTextField326.setFocusable(false);
 
         jTextField327.setEditable(false);
-        jTextField327.setEnabled(false);
         jTextField327.setFocusable(false);
 
         jTextField328.setEditable(false);
-        jTextField328.setEnabled(false);
         jTextField328.setFocusable(false);
 
         jTextField329.setEditable(false);
-        jTextField329.setEnabled(false);
         jTextField329.setFocusable(false);
 
         jTextField330.setEditable(false);
-        jTextField330.setEnabled(false);
         jTextField330.setFocusable(false);
 
         jTextField331.setEditable(false);
-        jTextField331.setEnabled(false);
         jTextField331.setFocusable(false);
 
         jTextField332.setEditable(false);
-        jTextField332.setEnabled(false);
         jTextField332.setFocusable(false);
 
         jTextField333.setEditable(false);
-        jTextField333.setEnabled(false);
         jTextField333.setFocusable(false);
 
         jTextField334.setEditable(false);
-        jTextField334.setEnabled(false);
         jTextField334.setFocusable(false);
 
         jTextField335.setEditable(false);
-        jTextField335.setEnabled(false);
         jTextField335.setFocusable(false);
 
         jTextField336.setEditable(false);
-        jTextField336.setEnabled(false);
         jTextField336.setFocusable(false);
 
         jTextField337.setEditable(false);
-        jTextField337.setEnabled(false);
         jTextField337.setFocusable(false);
 
         jTextField338.setEditable(false);
-        jTextField338.setEnabled(false);
         jTextField338.setFocusable(false);
 
         jTextField339.setEditable(false);
-        jTextField339.setEnabled(false);
         jTextField339.setFocusable(false);
 
         jTextField340.setEditable(false);
-        jTextField340.setEnabled(false);
         jTextField340.setFocusable(false);
 
         jTextField341.setEditable(false);
-        jTextField341.setEnabled(false);
         jTextField341.setFocusable(false);
 
         jTextField342.setEditable(false);
-        jTextField342.setEnabled(false);
         jTextField342.setFocusable(false);
 
         jTextField343.setEditable(false);
-        jTextField343.setEnabled(false);
         jTextField343.setFocusable(false);
 
         jTextField344.setEditable(false);
-        jTextField344.setEnabled(false);
         jTextField344.setFocusable(false);
 
         jTextField345.setEditable(false);
-        jTextField345.setEnabled(false);
         jTextField345.setFocusable(false);
 
         jTextField346.setEditable(false);
-        jTextField346.setEnabled(false);
         jTextField346.setFocusable(false);
 
         jTextField347.setEditable(false);
-        jTextField347.setEnabled(false);
         jTextField347.setFocusable(false);
 
         jTextField348.setEditable(false);
-        jTextField348.setEnabled(false);
         jTextField348.setFocusable(false);
 
         jTextField349.setEditable(false);
-        jTextField349.setEnabled(false);
         jTextField349.setFocusable(false);
 
         jTextField350.setEditable(false);
-        jTextField350.setEnabled(false);
         jTextField350.setFocusable(false);
 
         jTextField351.setEditable(false);
-        jTextField351.setEnabled(false);
         jTextField351.setFocusable(false);
 
         jTextField352.setEditable(false);
-        jTextField352.setEnabled(false);
         jTextField352.setFocusable(false);
 
         jTextField353.setEditable(false);
-        jTextField353.setEnabled(false);
         jTextField353.setFocusable(false);
 
         jTextField354.setEditable(false);
-        jTextField354.setEnabled(false);
         jTextField354.setFocusable(false);
 
         jTextField355.setEditable(false);
-        jTextField355.setEnabled(false);
         jTextField355.setFocusable(false);
 
         jTextField356.setEditable(false);
-        jTextField356.setEnabled(false);
         jTextField356.setFocusable(false);
 
         jTextField357.setEditable(false);
-        jTextField357.setEnabled(false);
         jTextField357.setFocusable(false);
 
         jTextField358.setEditable(false);
-        jTextField358.setEnabled(false);
         jTextField358.setFocusable(false);
 
         jTextField359.setEditable(false);
-        jTextField359.setEnabled(false);
         jTextField359.setFocusable(false);
 
         jTextField360.setEditable(false);
-        jTextField360.setEnabled(false);
         jTextField360.setFocusable(false);
 
         jTextField361.setEditable(false);
-        jTextField361.setEnabled(false);
         jTextField361.setFocusable(false);
 
         jTextField362.setEditable(false);
-        jTextField362.setEnabled(false);
         jTextField362.setFocusable(false);
 
         jTextField363.setEditable(false);
-        jTextField363.setEnabled(false);
         jTextField363.setFocusable(false);
 
         jTextField364.setEditable(false);
-        jTextField364.setEnabled(false);
         jTextField364.setFocusable(false);
 
         jTextField365.setEditable(false);
-        jTextField365.setEnabled(false);
         jTextField365.setFocusable(false);
 
         jTextField366.setEditable(false);
-        jTextField366.setEnabled(false);
         jTextField366.setFocusable(false);
 
         jTextField367.setEditable(false);
-        jTextField367.setEnabled(false);
         jTextField367.setFocusable(false);
 
         jTextField368.setEditable(false);
-        jTextField368.setEnabled(false);
         jTextField368.setFocusable(false);
 
         jTextField369.setEditable(false);
-        jTextField369.setEnabled(false);
         jTextField369.setFocusable(false);
 
         jTextField370.setEditable(false);
-        jTextField370.setEnabled(false);
         jTextField370.setFocusable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -2047,7 +1829,7 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
             }
         });
 
-        resoldreButton.setText("Resoldre");
+        resoldreButton.setText("Resol");
         resoldreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resoldreButtonActionPerformed(evt);
@@ -2081,13 +1863,14 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(validarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(resoldreButton, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(ajudaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(salvarButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ajudaButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resoldreButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 3, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2112,7 +1895,7 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))

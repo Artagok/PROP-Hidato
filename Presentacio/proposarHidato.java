@@ -371,6 +371,14 @@ public class proposarHidato extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTextField1.setText("#");
+
+        jTextField149.setText("#");
+
+        jTextField354.setText("#");
+
+        jTextField370.setText("#");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1246,11 +1254,11 @@ public class proposarHidato extends javax.swing.JFrame {
             matriu += "\n";
             index = index + this.NUM_COLUMNES - (columnaFinal-columnaInicial+1);
         }
-        cp.resultatProposarHidato(header,matriu);
         
         System.out.println(header);
         System.out.println(matriu);
         
+        cp.resultatProposarHidato(header,matriu);        
         /* Ja hem llegit l'hidato proposat */
     }//GEN-LAST:event_finishButtonActionPerformed
 
