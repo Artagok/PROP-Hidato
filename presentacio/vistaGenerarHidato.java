@@ -11,23 +11,23 @@ import Presentacio.ControladorPresentacio;
  *
  * @author carlosaires
  */
-public class menuplay extends javax.swing.JFrame {
+public class vistaGenerarHidato extends javax.swing.JFrame {
 
     /**
-     * Creates new form menuplay
+     * Creates new form vistaGenerarHidato
      */
+    
     private ControladorPresentacio cp;
     
-    public menuplay() {
+    public vistaGenerarHidato() {
         initComponents();
         this.setTitle("Hidato Game");
     }
 
-    public menuplay(ControladorPresentacio cp) {
-        this.cp = cp;
+    public vistaGenerarHidato(ControladorPresentacio cp) {
         initComponents();
         this.setTitle("Hidato Game");
-         
+        this.cp = cp;  
     }
 
     /**
@@ -39,27 +39,27 @@ public class menuplay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        GeneraHidatoButton = new javax.swing.JButton();
-        DefinirHidatoButton = new javax.swing.JButton();
-        ProposarHidatoButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        SeleccionaDificultat = new javax.swing.JComboBox<>();
+        generaButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        GeneraHidatoButton.setText("Genera Hidato");
-        GeneraHidatoButton.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Selecciona la dificultat");
+
+        SeleccionaDificultat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fàcil", "Mitjà", "Difícil" }));
+        SeleccionaDificultat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeneraHidatoButtonActionPerformed(evt);
+                SeleccionaDificultatActionPerformed(evt);
             }
         });
 
-        DefinirHidatoButton.setText("Definir Hidato");
-
-        ProposarHidatoButton.setText("Proposar Hidato");
-        ProposarHidatoButton.addActionListener(new java.awt.event.ActionListener() {
+        generaButton.setText("Genera");
+        generaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProposarHidatoButtonActionPerformed(evt);
+                generaButtonActionPerformed(evt);
             }
         });
 
@@ -77,53 +77,57 @@ public class menuplay extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(19, 19, 19)
                 .addComponent(BackButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ExitButton)
-                .addGap(34, 34, 34))
+                .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(GeneraHidatoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DefinirHidatoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ProposarHidatoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SeleccionaDificultat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(generaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(GeneraHidatoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(DefinirHidatoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ProposarHidatoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ExitButton)
-                    .addComponent(BackButton))
-                .addGap(18, 18, 18))
+                    .addComponent(jLabel1)
+                    .addComponent(SeleccionaDificultat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(generaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void GeneraHidatoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneraHidatoButtonActionPerformed
+    private void SeleccionaDificultatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionaDificultatActionPerformed
         // TODO add your handling code here:
-        cp.canviEscena("generarhidato");
-        this.setVisible(false);
-    }//GEN-LAST:event_GeneraHidatoButtonActionPerformed
+        
+    }//GEN-LAST:event_SeleccionaDificultatActionPerformed
 
-    private void ProposarHidatoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProposarHidatoButtonActionPerformed
+    private void generaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generaButtonActionPerformed
         // TODO add your handling code here:
-            cp.canviEscena("proposarhidato");
-        this.setVisible(false);
-    }//GEN-LAST:event_ProposarHidatoButtonActionPerformed
+        String dificultat;
+        dificultat = SeleccionaDificultat.toString(); //Em passa la dificultat triada al combobox a string
+        //cp.generaHidato(dificultat);
+    }//GEN-LAST:event_generaButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        cp.canviEscena("menuplayloadrank");
+        cp.canviEscena("menutypeplay");
         this.setVisible(false);
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -144,29 +148,29 @@ public class menuplay extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menuplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaGenerarHidato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menuplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaGenerarHidato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menuplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaGenerarHidato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menuplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaGenerarHidato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menuplay().setVisible(true);
+                new vistaGenerarHidato().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private javax.swing.JButton DefinirHidatoButton;
     private javax.swing.JButton ExitButton;
-    private javax.swing.JButton GeneraHidatoButton;
-    private javax.swing.JButton ProposarHidatoButton;
+    private javax.swing.JComboBox<String> SeleccionaDificultat;
+    private javax.swing.JButton generaButton;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

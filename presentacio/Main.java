@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentacio;
+package Presentacio;
 
 /**
  *
  * @author carlosaires
  */
 public class Main {
-    
     public static void main (String[] args) {
         javax.swing.SwingUtilities.invokeLater (new Runnable() {
             

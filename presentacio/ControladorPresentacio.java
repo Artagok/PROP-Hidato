@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentacio;
+package Presentacio;
 
-import domini.ControladorDomini;
+import Domini.ControladorDomini;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -16,13 +16,15 @@ import javax.swing.JOptionPane;
  * @author carlosaires
  */
 public class ControladorPresentacio {
-    
     private ControladorDomini cd;
     private loginsign ls;
     private login l;
     private register r;
     private menu m;
     private menuplay mp;
+    private vistaGenerarHidato gh;
+    private vistaProposarHidato ph;
+    private vistaDefinirHidato dh;
     
 
     /**
@@ -42,7 +44,8 @@ public class ControladorPresentacio {
     }
     public void canviEscena(String escena) {
         switch(escena) {
-            case "menulogin" :
+            case "menuloginsignup" :
+                ls = new loginsign(this);
                 ls.setVisible(true);
                 break;
             
@@ -71,6 +74,21 @@ public class ControladorPresentacio {
                 mp.setVisible(true);
                 break;
             
+            case "generarhidato" :
+                gh = new vistaGenerarHidato(this);
+                gh.setVisible(true);
+                break;
+                
+            case "proposarhidato" :
+                ph = new vistaProposarHidato(this);
+                ph.setVisible(true);
+                break;
+            
+            case "definirhidato" :
+                dh = new vistaDefinirHidato(this);
+                dh.setVisible(true);
+                break;
+            
             default:
                 break;
         }
@@ -79,12 +97,12 @@ public class ControladorPresentacio {
     public void loginUsr(String usr, String pwd) throws IOException, FileNotFoundException, ClassNotFoundException {
         boolean b1;
         boolean b2;
-        b2 = cd.comprovarPass(usr,pwd);
         b1 = cd.validarLogin(usr);
         if(!b1) {
             JOptionPane.showMessageDialog(null,"L'usuari no existex", "Display Message", JOptionPane.INFORMATION_MESSAGE);
         }
         else {
+            b2 = cd.comprovarPass(usr,pwd);
             if(!b2) {
                 JOptionPane.showMessageDialog(null, "La contrasenya és incorrecta!", "Display Message", JOptionPane.INFORMATION_MESSAGE);
                 
@@ -107,7 +125,7 @@ public class ControladorPresentacio {
         if (b && b2) {
         //Creacio d'usuari exitosa
         JOptionPane.showMessageDialog(null,"L'usuari s'ha creat satisfactòriament","Display Message", JOptionPane.INFORMATION_MESSAGE);
-        canviEscena("login");
+        canviEscena("menuplay");
         r.setVisible(false);
         }
         
@@ -128,5 +146,4 @@ public class ControladorPresentacio {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
 }
