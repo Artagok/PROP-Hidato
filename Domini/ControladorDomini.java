@@ -48,5 +48,14 @@ public class ControladorDomini {
             }
             else return false;
     }
+
+    public boolean resultatProposarHidato(String header, String matriu) {
+       Taulell t = new Taulell(-1);
+       t.readTaulell(header, matriu);
+       int i = t.getICasellaInicial();
+       int j = t.getJCasellaInicial();
+       t.resoldreHidato(t.getTaulell().get(i).get(j));
+       return (t.esValid());
+    }
     
 }
