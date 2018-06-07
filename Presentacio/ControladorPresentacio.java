@@ -23,7 +23,7 @@ public class ControladorPresentacio {
     private menu m;
     private menuplay mp;
     private vistaGenerarHidato gh;
-    private vistaProposarHidato ph;
+    private proposarHidato ph;
     private vistaDefinirHidato dh;
     
 
@@ -80,7 +80,7 @@ public class ControladorPresentacio {
                 break;
                 
             case "proposarhidato" :
-                ph = new vistaProposarHidato(this);
+                ph = new proposarHidato(this);
                 ph.setVisible(true);
                 break;
             

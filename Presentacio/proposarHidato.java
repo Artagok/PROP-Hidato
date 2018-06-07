@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentacio;
+package Presentacio;
 
 /**
  *
@@ -14,9 +14,17 @@ public class proposarHidato extends javax.swing.JPanel {
     /**
      * Creates new form proposarHidato
      */
+    
+    private ControladorPresentacio cp;
     public proposarHidato() {
         initComponents();
     }
+    
+      public proposarHidato(ControladorPresentacio cp) {
+        initComponents();
+        this.cp = cp;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
