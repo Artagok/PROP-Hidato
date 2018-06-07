@@ -148,14 +148,9 @@ public class Taulell {
         String[] parsedMatriu = matriu.split("\n"); 
 
         this.tipusCasella       = new String(parsedLine[0]);
-        System.out.println(this.tipusCasella);
         this.tipusAdjacencia    = new String(parsedLine[1]);
-         System.out.println(this.tipusAdjacencia);
         this.numFiles           = Integer.parseInt(parsedLine[2]);
-         System.out.println(this.numFiles);
-         System.out.println(Integer.parseInt(parsedLine[3]));
         this.numColumnes    = Integer.parseInt(parsedLine[3]);
-         System.out.println("lel" + this.numColumnes);
 
         for (int i = 0; i < numFiles; ++i) {
             String line        = parsedMatriu[i];
