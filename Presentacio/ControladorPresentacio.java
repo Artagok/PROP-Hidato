@@ -25,7 +25,7 @@ public class ControladorPresentacio {
     private vistaGenerarHidato gh;
     private proposarHidato ph;
     private vistaDefinirHidato dh;
-    
+    private vistaJugarTaulell vjt;
 
     /**
      * @param args the command line arguments
@@ -145,5 +145,22 @@ public class ControladorPresentacio {
     
     public static void main(String[] args) {
         // TODO code application logic here
+    }
+
+    public void resultatProposarHidato(String header, String matriu) {
+        boolean b = cd.resultatProposarHidato(header,matriu);
+        if(b) {
+            JOptionPane.showMessageDialog(null,"El teu hidato proposat és vàlid","Display Message", JOptionPane.INFORMATION_MESSAGE);
+            //aqui pasarem el hidato pq el generi per j
+            vjt = new vistaJugarTaulell(this);
+            vjt.setVars(header,matriu);
+            vjt.setVisible(true);
+            ph.setVisible(false);
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null,"El teu hidato proposat no és valid","Display Message", JOptionPane.INFORMATION_MESSAGE);
+            canviEscena("proposarHidato");
+        }
     }
 }
