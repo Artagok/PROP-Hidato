@@ -73,5 +73,31 @@ public class ControladorDomini {
         t.resoldreHidato(t.getTaulell().get(i).get(j));
         return t.taulellToString();
     }
+
+    public String generaHidato(int dif, String usr) throws IOException, FileNotFoundException, ClassNotFoundException {
+        Taulell t = new Taulell(-2);
+        String jugadorAux = cpe.cargarJugador(usr);
+        Jugador j = gson.fromJson(jugadorAux, Jugador.class);
+        Partida p = new Partida(j, t);
+        p.generarHidato(dif);
+        String head = new String("");
+        head = p.getTaulell().calculaHead();
+        return head + p.getTaulell().taulellToString();
+        
+        
+        
+        
+    }
+
+    public String definirHidato(int dif, String tC, String tA, String usr) throws IOException, FileNotFoundException, ClassNotFoundException {
+        Taulell t = new Taulell(-2);
+        String jugadorAux = cpe.cargarJugador(usr);
+        Jugador j = gson.fromJson(jugadorAux, Jugador.class);
+        Partida p = new Partida(j, t);
+        p.definirHidato(dif,tC,tA);
+        String head = new String("");
+        head = p.getTaulell().calculaHead();
+        return head + p.getTaulell().taulellToString();
+    }
     
 }

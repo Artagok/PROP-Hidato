@@ -110,6 +110,11 @@ public class Taulell {
         System.out.println();
         return ret;
     }
+    public String calculaHead(){
+        String head = new String("");
+        head += (tipusCasella + "," + tipusAdjacencia + "," + numFiles + "," + numColumnes + "\n");
+        return head;
+    }
     
     public boolean esValid() {
        int count = countCasellesNum();

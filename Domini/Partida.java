@@ -54,7 +54,7 @@ public class Partida {
     public void stopTimer() {
         timer.cancel();
     }
-    public void definiriHidato(int dificultat, String tC, String tA){
+    public void definirHidato(int dificultat, String tC, String tA){
         Random rand = new Random();
         int r;
         int prob = 20;
@@ -181,7 +181,7 @@ public class Partida {
               }
           }
         }
-        this.taulell.imprimirTaulell();
+        //this.taulell.imprimirTaulell();
       }
 
     public void generarHidato(int dificultat){
@@ -200,7 +200,7 @@ public class Partida {
                 System.out.println("Aquest Hidato es de tipus Quadrat, amb adjacencia per Costat, i 3x3");
                 break;
           case 1:
-                this.taulell.setTipusCasella("T");
+                this.taulell.setTipusCasella("Q");
                 this.taulell.setTipusAdj("CA");
                 this.taulell.setNumFiles(3);
                 this.taulell.setNumColumnes(3);
@@ -214,14 +214,14 @@ public class Partida {
         r = rand.nextInt(2)%2;
         switch(r){
           case 0:
-                this.taulell.setTipusCasella("T");
+                this.taulell.setTipusCasella("Q");
                 this.taulell.setTipusAdj("CA");
                 this.taulell.setNumFiles(6);
                 this.taulell.setNumColumnes(6);
                 System.out.println("Aquest Hidato es de tipus Triangular, amb adjacencia per CostatVertex, i 6x6");
                 break;
           case 1:
-                this.taulell.setTipusCasella("H");
+                this.taulell.setTipusCasella("Q");
                 this.taulell.setTipusAdj("CA");
                 this.taulell.setNumFiles(4);
                 this.taulell.setNumColumnes(4);
@@ -235,7 +235,7 @@ public class Partida {
         r = rand.nextInt(2)%2;
         switch(r){
           case 0:
-                this.taulell.setTipusCasella("T");
+                this.taulell.setTipusCasella("Q");
                 this.taulell.setTipusAdj("C");
                 this.taulell.setNumFiles(6);
                 this.taulell.setNumColumnes(6);
