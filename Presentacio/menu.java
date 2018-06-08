@@ -29,6 +29,7 @@ public class menu extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Hidato Game");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,7 +145,7 @@ public class menu extends javax.swing.JFrame {
     private void RankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RankingButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RankingButtonActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

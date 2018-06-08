@@ -25,13 +25,24 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
     
     ControladorPresentacio cp;
     
+    private String usr;
+    
     public vistaJugarTaulell() {
         initComponents();
     }
 
-    public vistaJugarTaulell(ControladorPresentacio cp) {
+    public vistaJugarTaulell(ControladorPresentacio cp, String usr) {
         initComponents();
         this.cp = cp;
+        this.usr = usr;
+    }
+    
+    public void setUsuariVinculat(String user) {
+        this.usr = usr;
+    }
+    
+    public String getUsuariVinculat() {
+        return this.usr;
     }
     
     public void setVars(String header, String matriu) {
@@ -1915,12 +1926,108 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
 
     /* VALIDAR BUTTON ACTION*/
     private void validarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validarButtonActionPerformed
-        // TODO add your handling code here:
+        
+        String matriuResultat = "";
+        java.awt.Component[] textFieldArray;
+        textFieldArray = jPanel1.getComponents();
+        boolean invalidPerCasellaBuida = false;
+        
+        int index = 0;
+        for (int i = 0; i < this.NUM_FILES; ++i) {
+            boolean first = true;
+            for (int j = 0; j < this.NUM_COLUMNES; ++j) {
+                javax.swing.text.JTextComponent field = (javax.swing.text.JTextComponent) (javax.swing.JComponent) (java.awt.Container) textFieldArray[index];
+                String toAdd = field.getText();
+                
+                if(field.isEditable()) {
+                    if (toAdd.equals("") || (toAdd.equals("#")) || (toAdd.equals("*")) || (toAdd.equals("?")))
+                        invalidPerCasellaBuida = true;
+                }
+                
+                if(first) {
+                    first = false;
+                    if (toAdd.equals("")) 
+                        matriuResultat += "#";
+                    else
+                        matriuResultat += toAdd;
+                }
+                else {
+                    matriuResultat += ",";
+                    if (toAdd.equals("")) 
+                        matriuResultat += "#";
+                    else
+                        matriuResultat += toAdd;
+                }
+                ++index;
+            }
+            matriuResultat += "\n";
+        }
+        //System.out.println();
+        //System.out.println(matriuResultat);
+        cp.validarHidatoJugar(this.header,matriuResultat,invalidPerCasellaBuida);
     }//GEN-LAST:event_validarButtonActionPerformed
 
     /* RESOLDRE BUTTON ACTION */
     private void resoldreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resoldreButtonActionPerformed
-        // TODO add your handling code here:
+        String matriuResultat = "";
+        java.awt.Component[] textFieldArray;
+        textFieldArray = jPanel1.getComponents();
+        
+        int index = 0;
+        for (int i = 0; i < this.NUM_FILES; ++i) {
+            boolean first = true;
+            for (int j = 0; j < this.NUM_COLUMNES; ++j) {
+                javax.swing.text.JTextComponent field = (javax.swing.text.JTextComponent) (javax.swing.JComponent) (java.awt.Container) textFieldArray[index];
+                String toAdd = field.getText();
+                
+                if(first) {
+                    first = false;
+                    if (toAdd.equals("")) {
+                        if(field.isEditable())
+                            matriuResultat += "?";
+                        else
+                            matriuResultat += "#";
+                    }
+                    else
+                        matriuResultat += toAdd;
+                }
+                else {
+                    matriuResultat += ",";
+                    if (toAdd.equals("")) {
+                        if(field.isEditable())
+                            matriuResultat += "?";
+                        else
+                            matriuResultat += "#";
+                    }
+                    else
+                        matriuResultat += toAdd;
+                }
+                ++index;
+            }
+            matriuResultat += "\n";
+        }
+        //System.out.println();
+        //System.out.println(matriuResultat);
+        matriuResultat = cp.resoldreHidatoJugar(this.header,matriuResultat);
+        //System.out.println();
+        //System.out.println(matriuResultat);
+        textFieldArray = jPanel1.getComponents();
+        
+        String[] files = matriuResultat.split("\n");
+        index = 0;
+        
+        for (int i = 0; i < this.NUM_FILES; ++i) {
+            
+            String [] individuals = files[i].split(",");
+            
+            for (int j = 0; j < this.NUM_COLUMNES; ++j) {
+                
+                javax.swing.text.JTextComponent field = (javax.swing.text.JTextComponent) (javax.swing.JComponent) (java.awt.Container) textFieldArray[index];
+                if(field.isEditable())
+                    field.setText(individuals[j]);
+                ++index;
+            }
+        }
     }//GEN-LAST:event_resoldreButtonActionPerformed
 
     /* AJUDA BUTTON ACTION */
@@ -1935,7 +2042,8 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
 
     /* EXIT BUTTON ACTION */
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        // TODO add your handling code here:
+        cp.canviEscena("menuplay");
+        this.setVisible(false);
     }//GEN-LAST:event_exitButtonActionPerformed
 
     /**

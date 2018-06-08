@@ -28,6 +28,8 @@ public class proposarHidato extends javax.swing.JFrame {
         initComponents();
         this.cp = cp;
     }
+    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -321,7 +323,7 @@ public class proposarHidato extends javax.swing.JFrame {
 
         explicacio5.setText("del tauler");
 
-        seleccioComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costats", "Costats+Angles" }));
+        seleccioComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Costats", "Costats+Vertexs" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1203,7 +1205,7 @@ public class proposarHidato extends javax.swing.JFrame {
         /* Costats o Costats+Angles */
         if (seleccioComboBox1.getSelectedItem().equals("Costats"))
             header += "C,";
-        if (seleccioComboBox1.getSelectedItem().equals("Costats+Angles"))
+        if (seleccioComboBox1.getSelectedItem().equals("Costats+Vertexs"))
             header += "CA,";
                 
         /* Hidato total de 17x14 */
@@ -1255,8 +1257,8 @@ public class proposarHidato extends javax.swing.JFrame {
             index = index + this.NUM_COLUMNES - (columnaFinal-columnaInicial+1);
         }
         
-        System.out.println(header);
-        System.out.println(matriu);
+        //System.out.println(header);
+        //System.out.println(matriu);
         
         cp.resultatProposarHidato(header,matriu);        
         /* Ja hem llegit l'hidato proposat */

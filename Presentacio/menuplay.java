@@ -18,6 +18,7 @@ public class menuplay extends javax.swing.JFrame {
      */
     private ControladorPresentacio cp;
     
+    
     public menuplay() {
         initComponents();
         this.setTitle("Hidato Game");
@@ -29,6 +30,9 @@ public class menuplay extends javax.swing.JFrame {
         this.setTitle("Hidato Game");
          
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +68,11 @@ public class menuplay extends javax.swing.JFrame {
         });
 
         ExitButton.setText("Exit");
+        ExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitButtonActionPerformed(evt);
+            }
+        });
 
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +136,11 @@ public class menuplay extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BackButtonActionPerformed
 
+    
+    private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        System.exit(0);
+    }   
     /**
      * @param args the command line arguments
      */
