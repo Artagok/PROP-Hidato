@@ -2,7 +2,7 @@ package Domini;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Random;
 public class Taulell {
 
     //////////////////////////////////////////////////////////////////
@@ -93,7 +93,52 @@ public class Taulell {
       this.taulell = t;
 
     }
-    
+    public String ajuda(){
+        llegirTaulellOriginal();
+        String  resultat = new String ("");
+        boolean b = resoldreHidato(taulell.get(iCasellaInicial).get(jCasellaInicial));
+        if(!b){
+             return resultat;
+        }
+        else{
+            Random rand = new Random();
+            boolean canviat = false; 
+            while(! canviat){
+                int i = rand.nextInt(numFiles);
+                int j = rand.nextInt(numColumnes);
+                String valor = taulellOriginal.get(i).get(j);
+                String valor_ajuda = taulell.get(i).get(j).getValor();
+                if(!valor.equals(valor_ajuda)){
+                    taulellOriginal.get(i).set(j, new String(valor_ajuda));
+                    canviat = true;
+                }
+            }
+            for(int i = 0; i < 14; ++i){
+                for(int j = 0; j < 17; ++j){
+                    if(i < numFiles && j < numColumnes){
+                        if(j == 0){
+                            resultat += taulellOriginal.get(i).get(j);
+                        }
+                        else{
+                            resultat += ",";
+                            resultat += taulellOriginal.get(i).get(j);
+                        }
+                    }
+                    if(j == 0){
+                        resultat += "#";
+                    }
+                    else {
+                        resultat += ",";
+                        resultat += "#";
+                    } 
+                }
+                resultat += "\n";
+            }
+            
+        }
+        return resultat;
+        
+    }
     public String taulellToString() {
         String ret = "";
         for (int i = 0; i < numFiles; ++i) {
