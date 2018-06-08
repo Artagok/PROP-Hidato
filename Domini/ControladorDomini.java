@@ -67,7 +67,7 @@ public class ControladorDomini {
     public String resoldreHidatoJugar(String header, String matriuResultat) {
         Taulell t = new Taulell(-1);
         t.readTaulell(header, matriuResultat);
-        t.imprimirTaulell();
+        //t.imprimirTaulell();
         int i = t.getICasellaInicial();
         int j = t.getJCasellaInicial();
         t.resoldreHidato(t.getTaulell().get(i).get(j));
@@ -90,7 +90,7 @@ public class ControladorDomini {
     }
 
     public String definirHidato(int dif, String tC, String tA, String usr) throws IOException, FileNotFoundException, ClassNotFoundException {
-        Taulell t = new Taulell(-2);
+        Taulell t = new Taulell(-3);
         String jugadorAux = cpe.cargarJugador(usr);
         Jugador j = gson.fromJson(jugadorAux, Jugador.class);
         Partida p = new Partida(j, t);
@@ -98,6 +98,14 @@ public class ControladorDomini {
         String head = new String("");
         head = p.getTaulell().calculaHead();
         return head + p.getTaulell().taulellToString();
+    }
+
+    public String ajuda1(String header, String matriuResultat) {
+        Taulell t = new Taulell(-4);
+        t.readTaulell(header, matriuResultat);
+        if(t.esValid()) return"JaEraValid";
+        return t.ajuda();
+        
     }
     
 }
