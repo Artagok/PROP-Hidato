@@ -6,6 +6,10 @@
 package Presentacio;
 
 import Presentacio.ControladorPresentacio;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
 
 /**
  *
@@ -121,8 +125,65 @@ public class vistaGenerarHidato extends javax.swing.JFrame {
     private void generaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generaButtonActionPerformed
         // TODO add your handling code here:
         String dificultat;
-        dificultat = SeleccionaDificultat.toString(); //Em passa la dificultat triada al combobox a string
-        //cp.generaHidato(dificultat);
+        int dif;
+        dificultat = SeleccionaDificultat.getSelectedItem().toString(); //Em passa la dificultat triada al combobox a string
+        if (dificultat.equals("Fàcil")) dif = 1;
+        else if (dificultat.equals("Mitjà")) dif = 2;
+        else if (dificultat.equals("Difícil")) dif = 3;
+        else dif = -1;
+        String mathead = new String("");
+        try {
+            mathead = cp.generaHidato(dif);
+        } catch (IOException ex) {
+            Logger.getLogger(vistaGenerarHidato.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(vistaGenerarHidato.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String[] parsed = mathead.split("\n");
+        //System.out.println(parsed);
+        String[] head = parsed[0].split(",");
+        int files= Integer.parseInt(head[2]);
+        int columnes = Integer.parseInt(head[3]);
+        String matbona = new String();
+        for (int i= 1; i <= files; ++i) {
+             matbona += (parsed[i] +"\n");         
+        }
+        //System.out.println(matbona);
+        String[] arreglaMat = matbona.split("\n");
+        //for(int y=0; y<files;++y){
+        //    System.out.println(arreglaMat[y] + " ");
+        //}
+        ArrayList<String> totSeparat = new ArrayList<String> (0);
+        for(int i = 0; i < files; ++i){
+            String[] aux = arreglaMat[i].split(",");
+            for(int j = 0; j < columnes; ++j){
+                totSeparat.add(aux[j]);
+            }
+        }
+        
+        String resultatMatriu = new String("");
+        for(int i = 0; i < 14; ++i){
+            for(int j = 0; j < 17; ++j){
+                if(i < files && j < columnes){
+                    if(j == 0) resultatMatriu += totSeparat.get(i*columnes+j);
+                    else {
+                        resultatMatriu += ",";
+                        resultatMatriu += totSeparat.get(i*columnes+j);
+                    }
+                }
+                else {
+                    if(j == 0) resultatMatriu += "#";
+                    else {
+                        resultatMatriu += ",";
+                        resultatMatriu += "#";
+                    }
+                }
+            }
+            resultatMatriu += "\n";
+        }
+        System.out.println(resultatMatriu);
+        
+        cp.resultatGenerarHidato(parsed[0],resultatMatriu);
     }//GEN-LAST:event_generaButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed

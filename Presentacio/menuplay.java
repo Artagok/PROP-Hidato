@@ -59,6 +59,11 @@ public class menuplay extends javax.swing.JFrame {
         });
 
         DefinirHidatoButton.setText("Definir Hidato");
+        DefinirHidatoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DefinirHidatoButtonActionPerformed(evt);
+            }
+        });
 
         ProposarHidatoButton.setText("Proposar Hidato");
         ProposarHidatoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +140,11 @@ public class menuplay extends javax.swing.JFrame {
         cp.canviEscena("menuplay");
         this.setVisible(false);
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void DefinirHidatoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DefinirHidatoButtonActionPerformed
+        cp.canviEscena("definirhidato");
+        this.setVisible(false);
+    }//GEN-LAST:event_DefinirHidatoButtonActionPerformed
 
     
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           

@@ -192,4 +192,40 @@ public class ControladorPresentacio {
         matriuResultat = cd.resoldreHidatoJugar(header,matriuResultat);
         return matriuResultat;
     }
+
+    String generaHidato(int dif) throws IOException, FileNotFoundException, ClassNotFoundException {
+        return cd.generaHidato(dif,this.usr);
+    }
+
+    void resultatGenerarHidato(String header, String matriu) {
+        vjt = new vistaJugarTaulell(this,this.usr);
+        vjt.setVars(header,matriu);
+        vjt.setVisible(true);
+        gh.setVisible(false);
+        String[] lines = header.split(",");
+        String adjac;
+        if (lines[1].equals("C"))
+            adjac = "costats";
+        else 
+            adjac = "costats+vèrtexs";
+        JOptionPane.showMessageDialog(null,"Les adjacències són per " + adjac,"Informació sobre adjacències", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    String definirHidato(int dif, String tC, String tA) throws IOException, FileNotFoundException, ClassNotFoundException {
+        return cd.definirHidato(dif,tC,tA,this.usr);
+    }
+
+    void resultatDefinirHidato(String header, String resultatMatriu) {
+        vjt = new vistaJugarTaulell(this,this.usr);
+        vjt.setVars(header,resultatMatriu);
+        vjt.setVisible(true);
+        dh.setVisible(false);
+        String[] lines = header.split(",");
+        String adjac;
+        if (lines[1].equals("C"))
+            adjac = "costats";
+        else 
+            adjac = "costats+vèrtexs";
+        JOptionPane.showMessageDialog(null,"Les adjacències són per " + adjac,"Informació sobre adjacències", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

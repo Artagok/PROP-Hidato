@@ -361,6 +361,7 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         salvarButton = new javax.swing.JButton();
         timeLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1868,20 +1869,27 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
             }
         });
 
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ajudaButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resoldreButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salvarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exitButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(validarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ajudaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resoldreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1895,8 +1903,10 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(salvarButton)
                 .addGap(18, 18, 18)
+                .addComponent(resetButton)
+                .addGap(16, 16, 16)
                 .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addGap(0, 0, 0))
         );
@@ -1969,7 +1979,7 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
 
     /* RESOLDRE BUTTON ACTION */
     private void resoldreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resoldreButtonActionPerformed
-        String matriuResultat = "";
+        String matriuResultat = new String("");
         java.awt.Component[] textFieldArray;
         textFieldArray = jPanel1.getComponents();
         
@@ -2015,7 +2025,8 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         
         String[] files = matriuResultat.split("\n");
         index = 0;
-        
+        //System.out.println("MATRIU");
+        //System.out.println(matriuResultat);
         for (int i = 0; i < this.NUM_FILES; ++i) {
             
             String [] individuals = files[i].split(",");
@@ -2045,6 +2056,22 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         cp.canviEscena("menuplay");
         this.setVisible(false);
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    /* RESET BUTTON ACTION */
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        java.awt.Component[] textFieldArray;
+        textFieldArray = jPanel1.getComponents();
+        
+        int index = 0;
+        for (int i = 0; i < this.NUM_FILES; ++i) {
+            for (int j = 0; j < this.NUM_COLUMNES; ++j) {
+                javax.swing.text.JTextComponent field = (javax.swing.text.JTextComponent) (javax.swing.JComponent) (java.awt.Container) textFieldArray[index];
+                if (field.isEditable())
+                    field.setText("");
+                ++index;
+            }
+        }
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2324,6 +2351,7 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton resetButton;
     private javax.swing.JButton resoldreButton;
     private javax.swing.JButton salvarButton;
     private javax.swing.JLabel timeLabel;
