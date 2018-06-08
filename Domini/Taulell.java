@@ -93,6 +93,24 @@ public class Taulell {
       this.taulell = t;
 
     }
+    
+    public String taulellToString() {
+        String ret = "";
+        for (int i = 0; i < numFiles; ++i) {
+            for (int j = 0; j < numColumnes; ++j) {
+                if (j == 0)
+                    ret += taulell.get(i).get(j).getValor();
+                else {
+                    ret += ",";
+                    ret += taulell.get(i).get(j).getValor();
+                }
+            }
+            ret += "\n";
+        }
+        System.out.println();
+        return ret;
+    }
+    
     public boolean esValid() {
        int count = countCasellesNum();
        //System.out.println("countCasellesNum() = " + count);

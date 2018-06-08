@@ -57,5 +57,21 @@ public class ControladorDomini {
        t.resoldreHidato(t.getTaulell().get(i).get(j));
        return (t.esValid());
     }
+
+    public boolean validarHidatoJugar(String header, String matriuResultat) {
+       Taulell t = new Taulell(-1);
+       t.readTaulell(header, matriuResultat);
+       return t.esValid();
+    }
+
+    public String resoldreHidatoJugar(String header, String matriuResultat) {
+        Taulell t = new Taulell(-1);
+        t.readTaulell(header, matriuResultat);
+        t.imprimirTaulell();
+        int i = t.getICasellaInicial();
+        int j = t.getJCasellaInicial();
+        t.resoldreHidato(t.getTaulell().get(i).get(j));
+        return t.taulellToString();
+    }
     
 }
