@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -2068,7 +2069,78 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
 
     /* AJUDA BUTTON ACTION */
     private void ajudaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaButtonActionPerformed
-        // TODO add your handling code here:
+        String matriuResultat = new String("");
+        java.awt.Component[] textFieldArray;
+        textFieldArray = jPanel1.getComponents();
+        int index = 0;
+        for (int i = 0; i < this.NUM_FILES; ++i) {
+            boolean first = true;
+            for (int j = 0; j < this.NUM_COLUMNES; ++j) {
+                javax.swing.text.JTextComponent field = (javax.swing.text.JTextComponent) (javax.swing.JComponent) (java.awt.Container) textFieldArray[index];
+                String toAdd = field.getText();
+                
+                if(first) {
+                    first = false;
+                    if (toAdd.equals("")) {
+                        if(field.isEditable())
+                            matriuResultat += "?";
+                        else
+                            matriuResultat += "#";
+                    }
+                    else
+                        matriuResultat += toAdd;
+                }
+                else {
+                    matriuResultat += ",";
+                    if (toAdd.equals("")) {
+                        if(field.isEditable())
+                            matriuResultat += "?";
+                        else
+                            matriuResultat += "#";
+                    }
+                    else
+                        matriuResultat += toAdd;
+                }
+                ++index;
+            }
+            matriuResultat += "\n";
+        }
+         matriuResultat = cp.ajuda2(this.header,matriuResultat);
+         
+         if(matriuResultat.equals("")){
+             JOptionPane.showMessageDialog(null,"Tens errors en caselles que ja has establert.","Ajuda", JOptionPane.INFORMATION_MESSAGE);
+         }
+         else if(matriuResultat.equals("JaEraValid")){
+             JOptionPane.showMessageDialog(null,"Ja no et cal mes ajuda, per que no proves a Validar el teu Hidato?","Ajuda", JOptionPane.INFORMATION_MESSAGE);
+         }
+         else{
+            String[] files = matriuResultat.split("\n");
+            index = 0;
+            //System.out.println("MATRIU");
+            //System.out.println(matriuResultat);
+            String[] parsedHeader = this.header.split(",");
+            int nF = Integer.parseInt(parsedHeader[2]);
+            int nC = Integer.parseInt(parsedHeader[3]);
+            String columnesHash = new String("");
+            for(int k = 0; k < 17; k++){
+                columnesHash += "#,";
+            }
+            for (int i = 0; i < this.NUM_FILES; ++i) {
+
+                String [] individuals;
+                if(i < nF)individuals = files[i].split(",");
+                else individuals = columnesHash.split(",");
+
+                for (int j = 0; j < this.NUM_COLUMNES; ++j) {
+
+                    javax.swing.text.JTextComponent field = (javax.swing.text.JTextComponent) (javax.swing.JComponent) (java.awt.Container) textFieldArray[index];
+                    if(field.isEditable())
+                        field.setText(individuals[j]);
+                    ++index;
+                }
+            }
+             
+         }
     }//GEN-LAST:event_ajudaButtonActionPerformed
 
     /* SALVAR BUTTON ACTION */ 

@@ -231,4 +231,8 @@ public class ControladorPresentacio {
             adjac = "costats+vèrtexs";
         JOptionPane.showMessageDialog(null,"Les adjacències són per " + adjac,"Informació sobre adjacències", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    String ajuda2(String header, String matriuResultat) {
+        return cd.ajuda1(header, matriuResultat);
+    }
 }
