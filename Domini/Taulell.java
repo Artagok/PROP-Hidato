@@ -117,20 +117,25 @@ public class Taulell {
                 for(int j = 0; j < 17; ++j){
                     if(i < numFiles && j < numColumnes){
                         if(j == 0){
-                            resultat += taulellOriginal.get(i).get(j);
+                            if(!taulellOriginal.get(i).get(j).equals("?"))
+                                resultat += taulellOriginal.get(i).get(j);
                         }
                         else{
                             resultat += ",";
-                            resultat += taulellOriginal.get(i).get(j);
+                            if(!taulellOriginal.get(i).get(j).equals("?"))
+                                resultat += taulellOriginal.get(i).get(j);
+                            
                         }
                     }
-                    if(j == 0){
-                        resultat += "#";
+                    else{
+                        if(j == 0){
+                            resultat += "#";
+                        }
+                        else {
+                            resultat += ",";
+                            resultat += "#";
+                        }
                     }
-                    else {
-                        resultat += ",";
-                        resultat += "#";
-                    } 
                 }
                 resultat += "\n";
             }
