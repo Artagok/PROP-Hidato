@@ -168,10 +168,11 @@ public class ControladorPresentacio {
         }
     }
 
-    void validarHidatoJugar(String header, String matriuResultat, boolean invalidPerCasellaBuida) {
+    boolean validarHidatoJugar(String header, String matriuResultat, boolean invalidPerCasellaBuida) {
         
         if (invalidPerCasellaBuida) {
             JOptionPane.showMessageDialog(null,"La teva solució no és correcta","Display Message", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
         
         else {
@@ -180,10 +181,12 @@ public class ControladorPresentacio {
             if(b) {
                 // Insertar el usr a ranking, ha solucionat be el Hidato
                 JOptionPane.showMessageDialog(null,"Has solucionat l'Hidato correctament","Display Message", JOptionPane.INFORMATION_MESSAGE);
+                return true;
             }
 
             else {
                 JOptionPane.showMessageDialog(null,"La teva solució no és correcta","Display Message", JOptionPane.INFORMATION_MESSAGE);
+                return false;
             }
         }
     }

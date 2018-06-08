@@ -6,6 +6,8 @@
 package Presentacio;
 
 import java.awt.Color;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.BorderFactory;
 
 /**
@@ -22,6 +24,9 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
     
     private final int NUM_FILES     = 14;
     private final int NUM_COLUMNES  = 17;
+    
+    private int time;
+    private Timer timer = new Timer();
     
     ControladorPresentacio cp;
     
@@ -48,7 +53,16 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
     public void setVars(String header, String matriu) {
         this.header = new String(header);
         this.matriu = new String(matriu);
+        this.time = 0;
         initMatriu();
+        timer.scheduleAtFixedRate(new TimerTask(){
+
+                @Override
+                public void run() {
+                        timeLabel.setText(String.valueOf("Temps: "+time+"s"));
+                        time++;
+                }
+            }, 0, 1000);
     }
     
     private void initMatriu() {
@@ -1974,7 +1988,9 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         }
         //System.out.println();
         //System.out.println(matriuResultat);
-        cp.validarHidatoJugar(this.header,matriuResultat,invalidPerCasellaBuida);
+        boolean acabarTimer = cp.validarHidatoJugar(this.header,matriuResultat,invalidPerCasellaBuida);
+        if (acabarTimer)
+            timer.cancel();
     }//GEN-LAST:event_validarButtonActionPerformed
 
     /* RESOLDRE BUTTON ACTION */
