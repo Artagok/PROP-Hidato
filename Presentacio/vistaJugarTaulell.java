@@ -2043,9 +2043,18 @@ public class vistaJugarTaulell extends javax.swing.JFrame {
         index = 0;
         //System.out.println("MATRIU");
         //System.out.println(matriuResultat);
+        String[] parsedHeader = this.header.split(",");
+        int nF = Integer.parseInt(parsedHeader[2]);
+        int nC = Integer.parseInt(parsedHeader[3]);
+        String columnesHash = new String("");
+        for(int k = 0; k < 17; k++){
+            columnesHash += "#,";
+        }
         for (int i = 0; i < this.NUM_FILES; ++i) {
             
-            String [] individuals = files[i].split(",");
+            String [] individuals;
+            if(i < nF)individuals = files[i].split(",");
+            else individuals = columnesHash.split(",");
             
             for (int j = 0; j < this.NUM_COLUMNES; ++j) {
                 
